@@ -7,14 +7,14 @@ export default class LandingPage extends Component {
     render() {
         return (
             <>
-                <header>
+                <header className='landing_header'>
                     <h1>tips.</h1>
                     <p>Keep track of your money.</p>
                 </header>
-                <nav>
+                <nav className='landing_nav'>
                     <ul class="nav-list">
                         {/* change **<Link to=>** after static deploy */}
-                        <li><Link to={`/dashboard`}>login</Link></li>
+                        <li><Link to={`/login`}>login</Link></li>
                         <li><Link to={`/register`}>sign up</Link></li>
                     </ul>
                 </nav>
