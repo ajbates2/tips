@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class RegistrationForm extends Component {
+export default class ShiftPage extends Component {
     render() {
         return (
             <>
