@@ -4,10 +4,13 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import { ShiftListProvider } from './contexts/shiftHistoryContext';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <ShiftListProvider>
+      <App />
+    </ShiftListProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
