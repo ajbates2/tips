@@ -10,7 +10,6 @@ export default class ShiftHistoryList extends Component {
             <li key={tips.id}>
                 {format(tips.date, 'EEE MMM do yyyy')} - ${tips.tips} - {tips.hours} hrs
             </li>
-
         )
     }
 
