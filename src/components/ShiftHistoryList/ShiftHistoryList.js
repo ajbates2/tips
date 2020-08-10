@@ -6,7 +6,10 @@ import { format } from "date-fns";
 export default class ShiftHistoryList extends Component {
 
     renderList = () => {
-        return store.shift.map(tips =>
+        const sortedList = store.shift.sort((a, b) => {
+            return b.date - a.date
+        })
+        return sortedList.map(tips =>
             <li key={tips.id}>
                 {format(tips.date, 'EEE MMM do yyyy')} - ${tips.tips} - {tips.hours} hrs
             </li>
