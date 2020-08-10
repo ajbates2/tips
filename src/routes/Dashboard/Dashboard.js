@@ -7,8 +7,11 @@ import ShiftHistoryList from "../../components/ShiftHistoryList/ShiftHistoryList
 import Header from "../../components/header/header"
 import ShiftForm from "../../components/ShiftForm/ShiftForm";
 import PaycheckForm from "../../components/PaycheckForm/PaycheckForm"
+import ShiftContext from "../../contexts/shiftHistoryContext";
 
 export default class Dashboard extends Component {
+
+    static contextType = ShiftContext
 
     state = {
         moneyStep: 'noSelection'
@@ -32,13 +35,13 @@ export default class Dashboard extends Component {
                 <Header />
                 <main className='dashboard_main'>
                     <section className='ehr_box'>
-                        <EHR />
+                        <EHR shift={this.context} />
                     </section>
                     <section className='mtd_box'>
-                        <MTD />
+                        <MTD shift={this.context} />
                     </section>
                     <section className='ytd_box'>
-                        <YTD />
+                        <YTD shift={this.context} />
                     </section>
                     <section className='shiftHistory_box'>
                         <ShiftHistoryList />

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import './ShiftHistoryList.css'
-import store from '../../store'
 import { format } from "date-fns";
+import ShiftContext from "../../contexts/shiftHistoryContext";
 
 export default class ShiftHistoryList extends Component {
 
+    static contextType = ShiftContext
+
     renderList = () => {
-        const sortedList = store.shift.sort((a, b) => {
+        const sortedList = this.context.shifts.sort((a, b) => {
             return b.date - a.date
         })
         return sortedList.map(tips =>
@@ -24,3 +26,4 @@ export default class ShiftHistoryList extends Component {
         )
     }
 }
+

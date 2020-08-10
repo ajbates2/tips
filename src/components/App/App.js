@@ -9,6 +9,12 @@ import LoginPage from '../../routes/LoginPage/LoginPage';
 
 class App extends Component {
 
+  state = {
+    shift: [],
+    paychecks: [],
+    error: null,
+  }
+
   render() {
     return (
       <div className="App">

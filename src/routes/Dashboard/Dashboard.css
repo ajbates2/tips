@@ -1,24 +1,3 @@
-.dashboard_header {
-    background-color: white;
-    height: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.dashboard_header h1 {
-    margin: 0 10px 10px;
-    font-size: x-large;
-    justify-content: flex-end;
-}
-
-.dashboard_header a {
-    text-decoration: none;
-    color: black;
-    margin-right: 10px;
-}
-
 .dashboard_main {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;

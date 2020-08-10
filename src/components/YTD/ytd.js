@@ -1,37 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import './ytd.css'
-import store from "../../store";
 
-export default class YTD extends Component {
+export default function YTD(props) {
 
-    render() {
+    function CalculateYtd({ year }) {
+
+        const filteredTips = props.shift.shifts.filter(tips => {
+            if (tips.date.getFullYear() === year)
+                return tips
+        })
+        const tipArray = filteredTips.map(tips => { return tips.tips++ })
+        const filteredChecks = props.shift.paychecks.filter(checks => {
+            if (checks.date.getFullYear() === year)
+                return checks
+        })
+        const checkArray = filteredChecks.map(check => { return check.paycheck++ })
+        const tipSum = tipArray.reduce((a, b) => a + b, 0)
+        const checksum = checkArray.reduce((a, b) => a + b, 0)
+        const Ytd = tipSum + checksum
         return (
-            <div>
-                <h2>YTD</h2>
-                <CalculateYtd year={new Date().getFullYear()} />
-            </div>
+            <p>${Ytd}</p>
         )
     }
-}
 
-function CalculateYtd({ year }) {
-
-    const filteredTips = store.shift.filter(tips => {
-        if (tips.date.getFullYear() === year) {
-            return tips
-        }
-    })
-    const tipTotal = filteredTips.map(tips => { return tips.tips++ })
-    const filteredChecks = store.paychecks.filter(checks => {
-        if (checks.date.getFullYear() === year) {
-            return checks
-        }
-    })
-    const checkTotal = filteredChecks.map(check => { return check.paycheck++ })
-    const tipSum = tipTotal.reduce((a, b) => a + b, 0)
-    const checksum = checkTotal.reduce((a, b) => a + b, 0)
-    const Ytd = tipSum + checksum
     return (
-        <p>${Ytd}</p>
+        <div>
+            <h2>YTD</h2>
+            <CalculateYtd year={new Date().getFullYear()} />
+        </div>
     )
 }
