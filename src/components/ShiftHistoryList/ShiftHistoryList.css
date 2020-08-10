@@ -1,3 +1,32 @@
 .shift_history {
     list-style: none;
+    padding: 0px;
+}
+
+.history_list_item {
+    border: 1px solid black;
+    margin: 5px 10px;
+    padding: 5px 5px 5px;
+    width: -webkit-fill-available;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.list_date {
+    grid-column: 1 / 1;
+}
+
+.list_tips {
+    grid-column: 2 / 2;
+    justify-self: center;
+}
+
+.list_hours {
+    grid-column: 3 / 3;
+    justify-self: center;
+}
+
+.list_buttons {
+    grid-column: 4 / 4;
+    justify-self: end;
 }

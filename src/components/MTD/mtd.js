@@ -4,12 +4,12 @@ import './mtd.css'
 export default function MTD(props) {
 
     function CalculateMtd({ month }) {
-        const filteredTips = props.shift.shifts.filter(tips => {
+        const filteredTips = props.data.shifts.filter(tips => {
             if (tips.date.getMonth() === month)
                 return tips
         })
         const tipTotal = filteredTips.map(tips => { return tips.tips++ })
-        const filteredChecks = props.shift.paychecks.filter(checks => {
+        const filteredChecks = props.data.paychecks.filter(checks => {
             if (checks.date.getMonth() === month)
                 return checks
         })

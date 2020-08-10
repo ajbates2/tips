@@ -30,11 +30,8 @@
 .shiftHistory_box {
     grid-column: 1 / span 3;
     grid-row: 2 / 2;
-    justify-self: center;
+    align-self: center;
     background-color: white;
-    width: 100%;
-    text-align: center;
-    padding: 100px;
 }
 
 .add_income_button a {
@@ -46,6 +43,26 @@
 }
 
 .add_income_button {
-    display: flex;
-    justify-content: center;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+.no_selection_button {
+    background-color: blue;
+    border: none;
+    color: white;
+    font-size: xx-large;
+    border-radius: 100%;
+    padding: 10px 20px;
+}
+
+.income_selection button {
+    background-color: green;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: large;
+    margin: 10px;
 }

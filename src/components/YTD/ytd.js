@@ -5,12 +5,12 @@ export default function YTD(props) {
 
     function CalculateYtd({ year }) {
 
-        const filteredTips = props.shift.shifts.filter(tips => {
+        const filteredTips = props.data.shifts.filter(tips => {
             if (tips.date.getFullYear() === year)
                 return tips
         })
         const tipArray = filteredTips.map(tips => { return tips.tips++ })
-        const filteredChecks = props.shift.paychecks.filter(checks => {
+        const filteredChecks = props.data.paychecks.filter(checks => {
             if (checks.date.getFullYear() === year)
                 return checks
         })
