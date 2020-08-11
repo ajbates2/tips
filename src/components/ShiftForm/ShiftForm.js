@@ -8,11 +8,8 @@ export default class ShiftForm extends Component {
                 <input type="number" step="0.01" id="tips" placeholder="$123" />
                 <label htmlFor="hours">Hours worked</label>
                 <input type="number" step="0.01" id="hours" placeholder="5.73" />
-                <label htmlFor="job">Select Job</label>
-                <select id="job">
-                    <option>JL Beers</option>
-                    <option>HeadFlyer Brewing</option>
-                </select>
+                <label htmlFor="shift_date">Select Job</label>
+                <input type="date" id="shift_date" />
                 <input type="submit" />
             </form>
         )

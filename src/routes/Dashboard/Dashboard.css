@@ -9,7 +9,16 @@
     grid-row: 1 / 1;
     background-color: gray;
     text-align: center;
+    align-content: center;
     height: 100px;
+}
+
+.ehr_box h2 {
+    margin: 35px auto 0px;
+}
+
+.ehr_box p {
+    margin: 0px;
 }
 
 .mtd_box {

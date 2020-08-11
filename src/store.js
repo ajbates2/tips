@@ -60,7 +60,7 @@ export default {
             jobId: 2,
             tips: 153,
             hours: 5.53,
-            date: new Date(2020, 7, 5)
+            date: new Date("2020-8-5")
         },
         {
             id: 6,

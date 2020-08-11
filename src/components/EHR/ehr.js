@@ -1,5 +1,4 @@
 import React from "react";
-import './ehr.css'
 
 export default function EHR(props) {
 
@@ -13,14 +12,13 @@ export default function EHR(props) {
         const ehr = (totalPaychecks + totalTips) / totalHours
 
         return (
-            <p>${ehr.toFixed(2)}/hr</p>
+            <h2>${ehr.toFixed(2)}/hr</h2>
         )
     }
 
     return (
-        <div>
-            <h2>EHR</h2>
+        <>
             <CalculateEhr />
-        </div>
+        </>
     )
 }

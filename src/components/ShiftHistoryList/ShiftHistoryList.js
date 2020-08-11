@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './ShiftHistoryList.css'
 import { format } from "date-fns";
 import ShiftContext from "../../contexts/shiftHistoryContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class ShiftHistoryList extends Component {
 
@@ -17,8 +18,8 @@ export default class ShiftHistoryList extends Component {
                 <span className="list_tips">${tips.tips}</span>
                 <span className="list_hours">{tips.hours} hrs</span>
                 <span className="list_buttons">
-                    <button>delete</button>
-                    <button>update</button>
+                    <FontAwesomeIcon icon='pencil-alt' className='fa_buttons' />
+                    <FontAwesomeIcon icon='eraser' className='fa_buttons' />
                 </span>
             </li>
         )
@@ -27,7 +28,6 @@ export default class ShiftHistoryList extends Component {
     render() {
         return (
             <>
-                <h3>History</h3>
                 <ul className='shift_history'>
                     {this.renderList()}
                 </ul >
@@ -35,4 +35,3 @@ export default class ShiftHistoryList extends Component {
         )
     }
 }
-

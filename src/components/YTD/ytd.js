@@ -19,14 +19,14 @@ export default function YTD(props) {
         const checksum = checkArray.reduce((a, b) => a + b, 0)
         const Ytd = tipSum + checksum
         return (
-            <p>${Ytd}</p>
+            <h2>${Ytd}</h2>
         )
     }
 
     return (
         <div>
-            <h2>YTD</h2>
             <CalculateYtd year={new Date().getFullYear()} />
+            <p>This year.</p>
         </div>
     )
 }

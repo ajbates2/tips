@@ -18,14 +18,14 @@ export default function MTD(props) {
         const checksum = checkTotal.reduce((a, b) => a + b, 0)
         const Mtd = tipSum + checksum
         return (
-            <p>${Mtd}</p>
+            <h2>${Mtd}</h2>
         )
     }
 
     return (
         <div>
-            <h2>MTD</h2>
             <CalculateMtd month={new Date().getMonth()} />
+            <p>This month.</p>
         </div>
     )
 }

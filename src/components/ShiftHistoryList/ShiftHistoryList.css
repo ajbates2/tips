@@ -4,7 +4,7 @@
 }
 
 .history_list_item {
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     margin: 5px 10px;
     padding: 5px 5px 5px;
     width: -webkit-fill-available;
@@ -14,19 +14,33 @@
 
 .list_date {
     grid-column: 1 / 1;
+    align-self: center;
 }
 
 .list_tips {
     grid-column: 2 / 2;
     justify-self: center;
+    align-self: center;
 }
 
 .list_hours {
     grid-column: 3 / 3;
     justify-self: center;
+    align-self: center;
 }
 
 .list_buttons {
     grid-column: 4 / 4;
     justify-self: end;
+    color: red;
+    align-self: center;
+}
+
+.fa_buttons {
+    margin: 5px 10px;
+    font-size: large;
+}
+
+.list_header {
+    margin: 10px;
 }
