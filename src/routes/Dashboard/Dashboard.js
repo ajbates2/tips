@@ -44,7 +44,7 @@ export default class Dashboard extends Component {
                         <YTD data={this.context} />
                     </section>
                     <section className='shiftHistory_box'>
-                        <ShiftHistoryList />
+                        <ShiftHistoryList data={this.context} />
                     </section>
                 </main>
                 <section className='add_income_button'>
