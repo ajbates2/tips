@@ -1,26 +1,30 @@
 import React, { Component } from 'react'
-import store from '../store'
 
 const ShiftContext = React.createContext({
-    shift: [],
-    paychecks: [],
+    shiftList: [],
+    paychecksList: [],
     error: null,
     setError: () => { },
     clearError: () => { },
     setShiftList: () => { },
+    setPaycheckList: () => { },
 })
 
 export default ShiftContext
 
 export class ShiftListProvider extends Component {
     state = {
-        shift: [],
-        paychecks: [],
+        shiftList: [],
+        paycheckList: [],
         error: null,
     }
 
     setShiftList = shiftList => {
         this.setState({ shiftList })
+    }
+
+    setPaycheckList = paycheckList => {
+        this.setState({ paycheckList })
     }
 
     clearError = () => {
@@ -34,12 +38,13 @@ export class ShiftListProvider extends Component {
 
     render() {
         const value = {
-            shifts: store.shift,
-            paychecks: store.paychecks,
+            shifts: this.state.shiftList,
+            paychecks: this.state.paycheckList,
             error: this.state.error,
             setError: this.setError,
             clearError: this.clearError,
             setShiftList: this.setShiftList,
+            setPaycheckList: this.setPaycheckList
         }
         return (
             <ShiftContext.Provider value={value}>

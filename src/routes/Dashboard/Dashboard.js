@@ -8,6 +8,7 @@ import Header from "../../components/header/header"
 import ShiftForm from "../../components/ShiftForm/ShiftForm";
 import PaycheckForm from "../../components/PaycheckForm/PaycheckForm"
 import ShiftContext from "../../contexts/shiftHistoryContext";
+import ShiftApiService from "../../services/shift-api-service";
 
 export default class Dashboard extends Component {
 
@@ -29,22 +30,40 @@ export default class Dashboard extends Component {
         this.setState({ moneyStep: 'shiftForm' })
     }
 
+    componentDidMount() {
+        this.context.clearError()
+        ShiftApiService.getShifts(2)
+            .then(this.context.setShiftList)
+            .catch(this.context.setError)
+        ShiftApiService.getPaychecks(2)
+            .then(this.context.setPaycheckList)
+            .catch(this.context.setError)
+    }
+
     render() {
         return (
             <>
                 <Header />
                 <main className='dashboard_main'>
                     <section className='ehr_box'>
-                        <EHR data={this.context} />
+                        <EHR
+                            shifts={this.context.shifts}
+                            paychecks={this.context.paychecks} />
                     </section>
                     <section className='mtd_box'>
-                        <MTD data={this.context} />
+                        <MTD
+                            shifts={this.context.shifts}
+                            paychecks={this.context.paychecks} />
                     </section>
                     <section className='ytd_box'>
-                        <YTD data={this.context} />
+                        <YTD
+                            shifts={this.context.shifts}
+                            paychecks={this.context.paychecks} />
                     </section>
                     <section className='shiftHistory_box'>
-                        <ShiftHistoryList data={this.context} />
+                        <ShiftHistoryList
+                            shifts={this.context.shifts}
+                            paychecks={this.context.paychecks} />
                     </section>
                 </main>
                 <section className='add_income_button'>
