@@ -9,6 +9,8 @@ import ShiftForm from "../../components/ShiftForm/ShiftForm";
 import PaycheckForm from "../../components/PaycheckForm/PaycheckForm"
 import ShiftContext from "../../contexts/shiftHistoryContext";
 import ShiftApiService from "../../services/shift-api-service";
+import jwt from 'jsonwebtoken'
+import TokenService from "../../services/token-service";
 
 export default class Dashboard extends Component {
 
@@ -31,11 +33,11 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.context.clearError()
-        ShiftApiService.getShifts(2)
+        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
+        ShiftApiService.getShifts(decodeAuthToken.user_id)
             .then(this.context.setShiftList)
             .catch(this.context.setError)
-        ShiftApiService.getPaychecks(2)
+        ShiftApiService.getPaychecks(decodeAuthToken.user_id)
             .then(this.context.setPaycheckList)
             .catch(this.context.setError)
     }

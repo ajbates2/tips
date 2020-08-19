@@ -12,7 +12,7 @@ export default function MTD(props) {
                 return null
             }
         })
-        const tipTotal = filteredTips.map(tips => { return tips.tips })
+        const tipTotal = filteredTips.map(tips => { return Number(tips.tips) })
         const filteredChecks = props.paychecks.filter(checks => {
             if (new Date(checks.date_received).getMonth() === month) {
                 return checks
@@ -21,7 +21,7 @@ export default function MTD(props) {
                 return null
             }
         })
-        const checkTotal = filteredChecks.map(check => { return check.check_total })
+        const checkTotal = filteredChecks.map(check => { return Number(check.check_total) })
         const tipSum = tipTotal.reduce((a, b) => a + b, 0)
         const checksum = checkTotal.reduce((a, b) => a + b, 0)
         const Mtd = tipSum + checksum

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './ShiftHistoryList.css'
-import { format } from "date-fns";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import moment from "moment";
 
 export default class ShiftHistoryList extends Component {
 
@@ -11,7 +11,7 @@ export default class ShiftHistoryList extends Component {
         })
         return sortedList.map(tips =>
             <li key={tips.id} className="history_list_item">
-                <span className="list_date">{format(new Date(tips.date_worked), 'EEE MMM do yyyy')}</span>
+                <span className="list_date">{moment(tips.date_worked).format('ddd MMM Do YYYY')}</span>
                 <span className="list_tips">${tips.tips}</span>
                 <span className="list_hours">{tips.hours} hrs</span>
                 <span className="list_buttons">
@@ -19,7 +19,7 @@ export default class ShiftHistoryList extends Component {
                     <FontAwesomeIcon icon='eraser' className='fa_buttons' />
                 </span>
             </li>
-        )
+        ).splice(0, 30)
     }
 
     render() {

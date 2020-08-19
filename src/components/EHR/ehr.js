@@ -3,11 +3,11 @@ import React from "react";
 export default function EHR(props) {
 
     function CalculateEhr() {
-        const hoursIndex = props.shifts.map(hours => { return hours.hours })
+        const hoursIndex = props.shifts.map(hours => { return Number(hours.hours) })
         const totalHours = hoursIndex.reduce((a, b) => a + b, 0)
-        const tipIndex = props.shifts.map(tips => { return tips.tips })
+        const tipIndex = props.shifts.map(tips => { return Number(tips.tips) })
         const totalTips = tipIndex.reduce((a, b) => a + b, 0)
-        const checkIndex = props.paychecks.map(checks => { return checks.check_total })
+        const checkIndex = props.paychecks.map(checks => { return Number(checks.check_total) })
         const totalPaychecks = checkIndex.reduce((a, b) => a + b, 0)
         const ehr = (totalPaychecks + totalTips) / totalHours
 
