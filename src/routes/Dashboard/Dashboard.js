@@ -32,13 +32,21 @@ export default class Dashboard extends Component {
         this.setState({ moneyStep: 'shiftForm' })
     }
 
-    componentDidMount() {
+    getshifts = () => {
         const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
         ShiftApiService.getShifts(decodeAuthToken.user_id)
             .then(this.context.setShiftList)
             .catch(this.context.setError)
+    }
+
+    componentDidMount() {
+        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
+        this.getshifts()
         ShiftApiService.getPaychecks(decodeAuthToken.user_id)
             .then(this.context.setPaycheckList)
+            .catch(this.context.setError)
+        ShiftApiService.getUserData(decodeAuthToken.user_id)
+            .then(this.context.setUserData)
             .catch(this.context.setError)
     }
 
@@ -77,8 +85,11 @@ export default class Dashboard extends Component {
                             <button onClick={this.handleShiftForm}>Shift Earnings</button>
                         </div>
                         )}
-                    {this.state.moneyStep === 'paycheckForm' && (<PaycheckForm />)}
-                    {this.state.moneyStep === 'shiftForm' && (<ShiftForm />)}
+                    {this.state.moneyStep === 'paycheckForm' && (<PaycheckForm user={this.context.userData} onSubmit={() => this.setState = 'noSelection'} />)}
+                    {this.state.moneyStep === 'shiftForm' && (<ShiftForm user={this.context.userData} onSubmit={() => {
+                        this.setState({ moneyStep: 'noSelection' })
+                        this.getshifts()
+                    }} />)}
                 </section>
             </>
         )
