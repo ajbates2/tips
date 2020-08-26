@@ -11,6 +11,8 @@ import ShiftContext from "../../contexts/shiftHistoryContext";
 import ShiftApiService from "../../services/shift-api-service";
 import jwt from 'jsonwebtoken'
 import TokenService from "../../services/token-service";
+import JobForm from "../../components/JobForm/JobForm";
+import RoleForm from "../../components/RoleForm/RoleForm";
 
 export default class Dashboard extends Component {
 
@@ -39,15 +41,44 @@ export default class Dashboard extends Component {
             .catch(this.context.setError)
     }
 
-    componentDidMount() {
+    getPaychecks = () => {
         const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
-        this.getshifts()
         ShiftApiService.getPaychecks(decodeAuthToken.user_id)
             .then(this.context.setPaycheckList)
             .catch(this.context.setError)
+    }
+
+    getUser = () => {
+        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
         ShiftApiService.getUserData(decodeAuthToken.user_id)
             .then(this.context.setUserData)
             .catch(this.context.setError)
+    }
+
+    renderAccountCreation = () => {
+        if (this.context.userData.jobs.length === 0) {
+            return (
+                <JobForm onSubmit={() => this.getUser()} />
+            )
+        }
+        else if (this.context.userData.roles.length === 0) {
+            return (
+                <RoleForm onSubmit={() => this.getUser()} />
+            )
+        }
+        else {
+            return (
+                <ShiftHistoryList
+                    shifts={this.context.shifts}
+                    paychecks={this.context.paychecks} />
+            )
+        }
+    }
+
+    componentDidMount() {
+        this.getUser()
+        this.getshifts()
+        this.getPaychecks()
     }
 
     render() {
@@ -56,6 +87,7 @@ export default class Dashboard extends Component {
                 <Header />
                 <main className='dashboard_main'>
                     <section className='ehr_box'>
+
                         <EHR
                             shifts={this.context.shifts}
                             paychecks={this.context.paychecks} />
@@ -71,9 +103,7 @@ export default class Dashboard extends Component {
                             paychecks={this.context.paychecks} />
                     </section>
                     <section className='shiftHistory_box'>
-                        <ShiftHistoryList
-                            shifts={this.context.shifts}
-                            paychecks={this.context.paychecks} />
+                        {this.renderAccountCreation()}
                     </section>
                 </main>
                 <section className='add_income_button'>
@@ -85,7 +115,10 @@ export default class Dashboard extends Component {
                             <button onClick={this.handleShiftForm}>Shift Earnings</button>
                         </div>
                         )}
-                    {this.state.moneyStep === 'paycheckForm' && (<PaycheckForm user={this.context.userData} onSubmit={() => this.setState = 'noSelection'} />)}
+                    {this.state.moneyStep === 'paycheckForm' && (<PaycheckForm user={this.context.userData} onSubmit={() => {
+                        this.setState({ moneyStep: 'noSelection' })
+                        this.getPaychecks()
+                    }} />)}
                     {this.state.moneyStep === 'shiftForm' && (<ShiftForm user={this.context.userData} onSubmit={() => {
                         this.setState({ moneyStep: 'noSelection' })
                         this.getshifts()
@@ -95,3 +128,4 @@ export default class Dashboard extends Component {
         )
     }
 }
+

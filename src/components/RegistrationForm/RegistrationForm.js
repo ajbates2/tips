@@ -30,8 +30,12 @@ export default class RegistrationForm extends Component {
     }
 
     render() {
+        const { error } = this.state
         return (
             <form className='rego_form' onSubmit={this.handleSubmit}>
+                <div role='alert'>
+                    {error && <p className='red'>{error}</p>}
+                </div>
                 <label htmlFor="RegoForm_username">What's your name?</label>
                 <input type="text" name="user_name" id="RegoForm_username" required />
                 <label htmlFor="RegoForm_email">Email address?</label>

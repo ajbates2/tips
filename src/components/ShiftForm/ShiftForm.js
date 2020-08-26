@@ -14,12 +14,6 @@ export default class ShiftForm extends Component {
             .catch(this.context.setError)
     }
 
-    logSubmit = ev => {
-        ev.preventDefault()
-        let data = document.getElementById("job")
-        console.log(data.value)
-    }
-
     render() {
         return (
             <form className='shift_form' onSubmit={this.handleSubmit}>
@@ -46,4 +40,3 @@ export default class ShiftForm extends Component {
         )
     }
 }
-

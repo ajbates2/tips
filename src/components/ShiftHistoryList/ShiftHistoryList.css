@@ -44,3 +44,7 @@
 .list_header {
     margin: 10px;
 }
+
+.fa_buttons:hover {
+    cursor: pointer;
+}

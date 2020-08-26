@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 const ShiftContext = React.createContext({
     shiftList: [],
     paychecksList: [],
-    userData: [],
+    userData: {
+        jobs: [],
+        roles: []
+    },
     error: null,
     setError: () => { },
     clearError: () => { },
@@ -19,7 +22,10 @@ export class ShiftListProvider extends Component {
     state = {
         shiftList: [],
         paycheckList: [],
-        userData: [],
+        userData: {
+            jobs: [],
+            roles: []
+        },
         error: null,
     }
 

@@ -64,7 +64,7 @@ const ShiftApiService = {
             )
     },
 
-    postPaycheck(id, check_total, date_received, job_id) {
+    postPaycheck(user_id, check_total, date_received, job_id) {
         return fetch(`${config.API_ENDPOINT}/paychecks`, {
             method: 'POST',
             headers: {
@@ -72,9 +72,49 @@ const ShiftApiService = {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
             body: JSON.stringify({
-                id: id,
+                user_id: user_id,
                 check_total,
                 date_received,
+                job_id
+            })
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+    },
+
+    postJob(user_id, job_name) {
+        return fetch(`${config.API_ENDPOINT}/jobs`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify({
+                user_id: user_id,
+                job_name
+            })
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+    },
+
+    postRole(user_id, role_name, hourly_rate, job_id) {
+        return fetch(`${config.API_ENDPOINT}/roles`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify({
+                user_id: user_id,
+                role_name,
+                hourly_rate,
                 job_id
             })
         })

@@ -27,9 +27,19 @@ export default class ShiftHistoryList extends Component {
         ).splice(0, 30)
     }
 
+    renderFirstEntry = () => {
+        if (this.props.shifts.length && this.props.paychecks.length === 0) {
+            return (<h2>Add your first shift or paycheck by clicking the blue button below.</h2>
+            )
+        }
+        else {
+            return null
+        }
+    }
     render() {
         return (
             <>
+                {this.renderFirstEntry()}
                 <ul className='shift_history'>
                     {this.renderList()}
                 </ul >
