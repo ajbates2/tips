@@ -6,13 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { ShiftListProvider } from './contexts/shiftHistoryContext';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faEdit, faPencilAlt, faEraser } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faEdit, faPencilAlt, faEraser, faTimes, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faTrashAlt,
   faEdit,
   faPencilAlt,
   faEraser,
+  faTimes,
+  faPlusCircle,
 )
 
 ReactDOM.render(

@@ -58,11 +58,7 @@
 }
 
 .no_selection_button {
-    background-color: blue;
-    border: none;
-    color: white;
-    font-size: xx-large;
-    border-radius: 100%;
+    color: blue;
     padding: 10px 20px;
 }
 
@@ -82,4 +78,28 @@
 
 .income_selection button:hover {
     cursor: pointer;
+}
+
+.close_shift_window {
+    position: inherit;
+    right: 45px;
+    bottom: 275px;
+}
+
+.close_shift_window:hover {
+    cursor: pointer;
+}
+
+.close_check_window {
+    position: inherit;
+    right: 45px;
+    bottom: 196px;
+}
+
+.close_check_window:hover {
+    cursor: pointer;
+}
+
+.setup_container {
+    text-align: center
 }

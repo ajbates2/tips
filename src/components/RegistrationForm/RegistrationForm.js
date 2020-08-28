@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthApiService from "../../services/auth-api-service";
+import TokenService from "../../services/token-service";
 
 export default class RegistrationForm extends Component {
     static defaultProps = {
@@ -22,6 +23,7 @@ export default class RegistrationForm extends Component {
                 user_name.value = ''
                 email.value = ''
                 password.value = ''
+                TokenService.saveAuthToken(user.authToken)
                 this.props.onRegistrationSuccess()
             })
             .catch(res => {
@@ -41,7 +43,7 @@ export default class RegistrationForm extends Component {
                 <label htmlFor="RegoForm_email">Email address?</label>
                 <input type="email" name="email" id="RegoForm_email" required />
                 <label htmlFor="RegoForm_password">Password</label>
-                <input type="password" name="password" id="RegoForm_password" required />
+                <input type="password" name="password" id="RegoForm_password" placeholder="1 caps, 1 numb, and 1 symbol" required />
                 <button type="submit">Let's get started</button>
             </form>
         )

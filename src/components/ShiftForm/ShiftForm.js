@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ShiftApiService from "../../services/shift-api-service";
 import ShiftContext from "../../contexts/shiftHistoryContext";
+import moment from "moment";
 
 export default class ShiftForm extends Component {
 
@@ -15,6 +16,7 @@ export default class ShiftForm extends Component {
     }
 
     render() {
+        const today = moment().format('YYYY-MM-DD');
         return (
             <form className='shift_form' onSubmit={this.handleSubmit}>
                 <label htmlFor="tips">tips</label>
@@ -33,8 +35,8 @@ export default class ShiftForm extends Component {
                         return <option key={role.id} value={role.id}>{role.role_name}</option>
                     })}
                 </select>
-                <label htmlFor="shift_date">Select Job</label>
-                <input type="date" id="shift_date" name="date_worked" required />
+                <label htmlFor="shift_date">When did you work?</label>
+                <input type="date" id="shift_date" name="date_worked" defaultValue={today} required />
                 <button type="submit">Add shift</button>
             </form>
         )

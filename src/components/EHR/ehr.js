@@ -16,9 +16,20 @@ export default function EHR(props) {
         )
     }
 
+    function prettyRender() {
+        if (props.shifts.length === 0) {
+            return (
+                <h2>$0/hr</h2>
+            )
+        }
+        else {
+            return <CalculateEhr />
+        }
+    }
+
     return (
         <>
-            <CalculateEhr />
+            {prettyRender()}
         </>
     )
 }

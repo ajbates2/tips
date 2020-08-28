@@ -16,13 +16,13 @@ export default class RoleForm extends Component {
 
     render() {
         return (
-            <>
-                <div>Add your first role at {this.context.userData.jobs[0].job_name}.</div>
+            <div className="setup_container">
+                <h3>Add your first role at {this.context.userData.jobs[0].job_name}.</h3>
                 <form className='role_form' onSubmit={this.handleSubmit}>
                     <label htmlFor="role_name">What is your title?</label>
                     <input type="text" id="role_name" name="role_name" placeholder="Server, Bartender, Barista, etc.." required />
                     <label htmlFor="hourly_rate">What is your hourly wage?</label>
-                    <input type="number" id="hourly_rate" name="hourly_rate" placeholder="10.00" required />
+                    <input type="number" step=".01" id="hourly_rate" name="hourly_rate" placeholder="10.00" required />
                     <label htmlFor="job">Which employer?</label>
                     <select id="job" name="job_id" required>
                         {this.context.userData.jobs.map(job => {
@@ -31,8 +31,8 @@ export default class RoleForm extends Component {
                     </select>
                     <button type="submit">Add Role</button>
                 </form>
-                <div>You will be able to add multiple roles in a future version</div>
-            </>
+                <p>You will be able to add multiple roles in a future version</p>
+            </div>
         )
     }
 }

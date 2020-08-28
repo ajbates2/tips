@@ -48,3 +48,9 @@
 .fa_buttons:hover {
     cursor: pointer;
 }
+
+.instructions {
+    text-align: center;
+    margin: 100px auto;
+    width: 75%;
+}

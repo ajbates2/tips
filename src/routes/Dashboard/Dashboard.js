@@ -13,6 +13,7 @@ import jwt from 'jsonwebtoken'
 import TokenService from "../../services/token-service";
 import JobForm from "../../components/JobForm/JobForm";
 import RoleForm from "../../components/RoleForm/RoleForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Dashboard extends Component {
 
@@ -75,6 +76,62 @@ export default class Dashboard extends Component {
         }
     }
 
+    renderAddButton() {
+        if (this.context.userData.roles.length === 0) {
+            return null
+        }
+        else {
+            return (
+                <section className='add_income_button'>
+                    {this.state.moneyStep === 'noSelection' &&
+                        (<FontAwesomeIcon
+                            icon="plus-circle"
+                            size="3x"
+                            className="no_selection_button"
+                            onClick={this.handleMoneyForm}
+                        />)
+                    }
+                    {this.state.moneyStep === 'selectForm' &&
+                        (<div className="income_selection">
+                            <button onClick={this.handlePaycheckForm}>Paycheck</button>
+                            <button onClick={this.handleShiftForm}>Shift Earnings</button>
+                        </div>
+                        )}
+                    {this.state.moneyStep === 'paycheckForm' && (
+                        <>
+                            <FontAwesomeIcon
+                                icon='times'
+                                className='close_check_window'
+                                onClick={() => this.setState({ moneyStep: 'noSelection' })} />
+                            <PaycheckForm
+                                user={this.context.userData}
+                                onSubmit={() => {
+                                    this.setState({ moneyStep: 'noSelection' })
+                                    this.getPaychecks()
+                                }}
+                            />
+                        </>
+                    )}
+                    {this.state.moneyStep === 'shiftForm' && (
+                        <>
+                            <FontAwesomeIcon
+                                icon='times'
+                                className='close_shift_window'
+                                onClick={() => this.setState({ moneyStep: 'noSelection' })} />
+                            <ShiftForm
+                                user={this.context.userData}
+                                onSubmit={() => {
+                                    this.setState({ moneyStep: 'noSelection' })
+                                    this.getshifts()
+                                }}
+                            />
+                        </>
+                    )}
+                </section>
+            )
+        }
+    }
+
     componentDidMount() {
         this.getUser()
         this.getshifts()
@@ -105,25 +162,9 @@ export default class Dashboard extends Component {
                     <section className='shiftHistory_box'>
                         {this.renderAccountCreation()}
                     </section>
+                    {this.renderAddButton()}
                 </main>
-                <section className='add_income_button'>
-                    {this.state.moneyStep === 'noSelection' &&
-                        (<button className="no_selection_button" onClick={this.handleMoneyForm}>+</button>)}
-                    {this.state.moneyStep === 'selectForm' &&
-                        (<div className="income_selection">
-                            <button onClick={this.handlePaycheckForm}>Paycheck</button>
-                            <button onClick={this.handleShiftForm}>Shift Earnings</button>
-                        </div>
-                        )}
-                    {this.state.moneyStep === 'paycheckForm' && (<PaycheckForm user={this.context.userData} onSubmit={() => {
-                        this.setState({ moneyStep: 'noSelection' })
-                        this.getPaychecks()
-                    }} />)}
-                    {this.state.moneyStep === 'shiftForm' && (<ShiftForm user={this.context.userData} onSubmit={() => {
-                        this.setState({ moneyStep: 'noSelection' })
-                        this.getshifts()
-                    }} />)}
-                </section>
+
             </>
         )
     }

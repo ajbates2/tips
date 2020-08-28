@@ -16,15 +16,15 @@ export default class JobForm extends Component {
 
     render() {
         return (
-            <>
-                <div>Add your first job!</div>
+            <div className="setup_container">
+                <h3>Add your first job!</h3>
                 <form className='job_form' onSubmit={this.handleSubmit}>
                     <label htmlFor="job_name">Name of employer</label>
                     <input type="text" id="job_name" name="job_name" required />
                     <button type="submit">Add new employer</button>
                 </form>
-                <div>You will be able to add multiple employers in a future version.</div>
-            </>
+                <p>You will be able to add multiple employers in a future version.</p>
+            </div>
         )
     }
 }
