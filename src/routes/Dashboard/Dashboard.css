@@ -40,7 +40,6 @@
     grid-column: 1 / span 3;
     grid-row: 2 / 2;
     align-self: center;
-    background-color: white;
 }
 
 .add_income_button a {
@@ -58,32 +57,47 @@
 }
 
 .no_selection_button {
-    color: blue;
-    padding: 10px 20px;
+    background-color: #16697A;
+    margin: 10px 20px;
+    padding: 10px;
+    color: #212121;
+    border-radius: 50%;
+    filter: drop-shadow(2px 2px 2px #212121);
 }
 
 .no_selection_button:hover {
     cursor: pointer;
 }
 
+.no_selection_button:active {
+    filter: none;
+    background-color: #CAE6DB;
+}
+
 .income_selection button {
-    background-color: green;
+    background-color: #16697A;
     border: none;
     color: white;
     border-radius: 5px;
     padding: 10px;
     font-size: large;
     margin: 10px;
+    filter: drop-shadow(2px 2px 2px #212121);
 }
 
 .income_selection button:hover {
     cursor: pointer;
 }
 
+.income_selection button:active {
+    filter: none;
+    background-color: #CAE6DB;
+}
+
 .close_shift_window {
     position: inherit;
     right: 45px;
-    bottom: 275px;
+    bottom: 331px;
 }
 
 .close_shift_window:hover {
@@ -93,7 +107,7 @@
 .close_check_window {
     position: inherit;
     right: 45px;
-    bottom: 196px;
+    bottom: 258px;
 }
 
 .close_check_window:hover {
@@ -101,5 +115,14 @@
 }
 
 .setup_container {
-    text-align: center
+    text-align: -webkit-center;
+    background-color: none;
+}
+
+.job_form button {
+    grid-column: 1 / span 2;
+}
+
+.role_form button {
+    grid-column: 1 / span 2;
 }

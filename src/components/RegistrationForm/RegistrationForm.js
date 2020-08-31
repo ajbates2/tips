@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthApiService from "../../services/auth-api-service";
 import TokenService from "../../services/token-service";
+import './RegistrationForm.css'
 
 export default class RegistrationForm extends Component {
     static defaultProps = {
@@ -35,16 +36,16 @@ export default class RegistrationForm extends Component {
         const { error } = this.state
         return (
             <form className='rego_form' onSubmit={this.handleSubmit}>
-                <div role='alert'>
-                    {error && <p className='red'>{error}</p>}
-                </div>
-                <label htmlFor="RegoForm_username">What's your name?</label>
-                <input type="text" name="user_name" id="RegoForm_username" required />
-                <label htmlFor="RegoForm_email">Email address?</label>
+                <label htmlFor="RegoForm_username" className="name_label">What's your name?</label>
+                <input type="text" name="user_name" id="RegoForm_username" className="name_input" required />
+                <label htmlFor="RegoForm_email" className="">Email address?</label>
                 <input type="email" name="email" id="RegoForm_email" required />
                 <label htmlFor="RegoForm_password">Password</label>
                 <input type="password" name="password" id="RegoForm_password" placeholder="1 caps, 1 numb, and 1 symbol" required />
                 <button type="submit">Let's get started</button>
+                <div role='alert' className="alert">
+                    {error && <p className='red'>{error}</p>}
+                </div>
             </form>
         )
     }

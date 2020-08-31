@@ -85,7 +85,7 @@ export default class Dashboard extends Component {
                 <section className='add_income_button'>
                     {this.state.moneyStep === 'noSelection' &&
                         (<FontAwesomeIcon
-                            icon="plus-circle"
+                            icon="plus"
                             size="3x"
                             className="no_selection_button"
                             onClick={this.handleMoneyForm}
@@ -143,22 +143,24 @@ export default class Dashboard extends Component {
             <>
                 <Header />
                 <main className='dashboard_main'>
-                    <section className='ehr_box'>
+                    <div className="info_container">
+                        <section className='ehr_box'>
 
-                        <EHR
-                            shifts={this.context.shifts}
-                            paychecks={this.context.paychecks} />
-                    </section>
-                    <section className='mtd_box'>
-                        <MTD
-                            shifts={this.context.shifts}
-                            paychecks={this.context.paychecks} />
-                    </section>
-                    <section className='ytd_box'>
-                        <YTD
-                            shifts={this.context.shifts}
-                            paychecks={this.context.paychecks} />
-                    </section>
+                            <EHR
+                                shifts={this.context.shifts}
+                                paychecks={this.context.paychecks} />
+                        </section>
+                        <section className='mtd_box'>
+                            <MTD
+                                shifts={this.context.shifts}
+                                paychecks={this.context.paychecks} />
+                        </section>
+                        <section className='ytd_box'>
+                            <YTD
+                                shifts={this.context.shifts}
+                                paychecks={this.context.paychecks} />
+                        </section>
+                    </div>
                     <section className='shiftHistory_box'>
                         {this.renderAccountCreation()}
                     </section>

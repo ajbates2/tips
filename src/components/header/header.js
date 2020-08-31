@@ -14,7 +14,7 @@ export default class Header extends Component {
 
     renderLogoutLink() {
         return (
-            <div className='Header__logged-in'>
+            <div className='header_logged_in'>
                 <Link
                     onClick={this.handleLogoutClick}
                     to='/'>
@@ -43,7 +43,7 @@ export default class Header extends Component {
     render() {
         return (
             <header className='dashboard_header'>
-                <Link to={'/'}><h1>tips.</h1></Link>
+                <h1 className="logo">tips.</h1>
                 {TokenService.hasAuthToken()
                     ? this.renderLogoutLink()
                     : this.renderLoginLink()}

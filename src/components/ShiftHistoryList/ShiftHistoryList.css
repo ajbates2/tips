@@ -1,52 +1,98 @@
 .shift_history {
     list-style: none;
     padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #83e0bdff;
+    margin: 0;
+    padding: 20px;
 }
 
 .history_list_item {
-    border-bottom: 1px solid black;
-    margin: 5px 10px;
+    font-family: 'Segoe UI', sans-serif;
+    margin:10px;
     padding: 5px 5px 5px;
-    width: -webkit-fill-available;
+    flex: 0 1 300px;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template: auto 1fr auto / auto 1fr auto;
+    background-color: #65AD91;
+    border-radius: 7px;
+    padding: 10px;
+    filter: drop-shadow(4px 4px 0px #212121);
 }
 
 .list_date {
-    grid-column: 1 / 1;
-    align-self: center;
+    grid-column: 3;
+    font-style: italic;
+    font-weight: 500;
 }
 
 .list_tips {
-    grid-column: 2 / 2;
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    padding: 20px;
     justify-self: center;
-    align-self: center;
+    font-size: larger;
+    font-weight: 700;
+    font-style: italic;
 }
 
-.list_hours {
-    grid-column: 3 / 3;
-    justify-self: center;
+.tip_row {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: flex-end;
     align-self: center;
+    border-right: 1px solid #212121;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+.hour_row {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: flex-end;
+    padding-left: 10px;
+    border-right: 1px solid #212121;
+    padding-right: 10px;
+}
+
+
+.list_hours {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    justify-self: center;
+    font-size: larger;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.list_job {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    padding-bottom: 5px;
+    font-style: italic;
 }
 
 .list_buttons {
-    grid-column: 4 / 4;
-    justify-self: end;
-    color: red;
-    align-self: center;
+    grid-column: 3;
+    grid-row: 3;
+    justify-self: flex-end;
+    align-self: flex-end;
+    padding: 5px;
 }
 
 .fa_buttons {
-    margin: 5px 10px;
-    font-size: large;
-}
-
-.list_header {
-    margin: 10px;
+    color: #CAE6DB;
 }
 
 .fa_buttons:hover {
     cursor: pointer;
+}
+
+.fa_buttons:active {
+    color: #212122;
 }
 
 .instructions {

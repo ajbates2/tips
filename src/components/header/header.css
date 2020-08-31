@@ -1,15 +1,19 @@
 .dashboard_header {
-    background-color: white;
-    height: 30px;
+    background-color: #83e0bdff;
+    height: inherit;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 }
 
-.dashboard_header h1 {
-    margin: 0 10px 10px;
-    font-size: x-large;
+.logo {
+    font-family: 'Segoe UI', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    color: #212121;
+    margin: 0 10px;
+    font-size: xx-large;
     justify-content: flex-end;
 }
 
@@ -17,4 +21,9 @@
     text-decoration: none;
     color: black;
     margin-right: 10px;
+    font-style: italic;
+}
+
+.dashboard_header a:hover {
+    cursor: pointer;
 }

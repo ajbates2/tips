@@ -19,7 +19,7 @@ export default class ShiftForm extends Component {
         const today = moment().format('YYYY-MM-DD');
         return (
             <form className='shift_form' onSubmit={this.handleSubmit}>
-                <label htmlFor="tips">tips</label>
+                <label htmlFor="tips">Tips made</label>
                 <input type="number" step="0.01" id="tips" name="tips" placeholder="123" required />
                 <label htmlFor="hours">Hours worked</label>
                 <input type="number" step="0.01" id="hours" name="hours" placeholder="5.73" required />

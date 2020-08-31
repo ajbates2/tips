@@ -9,10 +9,12 @@ export default class ShiftHistoryList extends Component {
     renderList = () => {
         return this.props.shifts.map(shift =>
             <li key={shift.id} className="history_list_item">
-                <span className="list_date">{moment(shift.date_worked).format('ddd MMM Do YYYY')}</span>
+                <span className="list_job">{shift.role.title} at {shift.role.employer}</span>
+                <span className="list_date">{moment(shift.date_worked).format('ddd M/D/YY')}</span>
+                <span className="tip_row">tips:</span>
                 <span className="list_tips">${shift.tips}</span>
-                <span className="list_hours">{shift.hours} hrs</span>
-                <span className="list_job">{shift.role.employer} - {shift.role.title}</span>
+                <span className="hour_row">hours:</span>
+                <span className="list_hours">{shift.hours}</span>
                 <span className="list_buttons">
                     {/* <FontAwesomeIcon icon='pencil-alt' className='fa_buttons' /> */}
                     <FontAwesomeIcon

@@ -34,6 +34,10 @@
     grid-row: 1 / 1;
     align-self: center;
     justify-self: center;
+    font-family: 'Segoe UI';
+    font-style: italic;
+    font-weight: 800;
+    font-size: xxx-large;
 }
 
 .landing_header p {

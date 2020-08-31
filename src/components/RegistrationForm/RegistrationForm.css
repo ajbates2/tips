@@ -1,0 +1,11 @@
+.rego_form button {
+    grid-column: 1 / span 2;
+}
+
+.alert {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    max-width: 300px;
+    color: red;
+    font-weight: bold;
+}
