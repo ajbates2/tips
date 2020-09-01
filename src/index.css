@@ -3,10 +3,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    color: #212121;
+    color: #1D2020;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #83e0bdff;
+  background-color: #2f4a4c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23283f41' fill-opacity='0.15'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.15'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 code {
@@ -20,8 +21,8 @@ code {
 
 form {
   font-family: 'Segoe UI';
-  background-color: white;
-  color: #212121;
+  background: linear-gradient(45deg, #2F4A4C, #456F6B);
+  box-shadow: 0 0 20px 10px #1D2020;
   width: fit-content;
   margin: 20px;
   padding: 50px 20px;
@@ -38,9 +39,9 @@ form label {
 form button {
   grid-column: 2;
   border: none;
-  background-color: #212121;
+  background-color: #1D2020;
   padding: 10px;
-  color: white;
+  color: #bdd8c7;
   border-radius: 5px;
   font-size: larger;
   font-style: italic;
@@ -51,6 +52,18 @@ form button:hover {
 }
 
 form button:active {
-  background-color: #83e0bdff;
-  color: #212121
+  background-color: #FF715B;
+  color: #1D2020
+}
+
+form input {
+  background: #BDD8C7;
+  border: none;
+  border-radius: 2px;
+}
+
+form select {
+  background: #BDD8C7;
+  border: none;
+  border-radius: 2px;
 }

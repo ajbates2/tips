@@ -144,18 +144,17 @@ export default class Dashboard extends Component {
                 <Header />
                 <main className='dashboard_main'>
                     <div className="info_container">
-                        <section className='ehr_box'>
-
+                        <section className='ehr_box info_box'>
                             <EHR
                                 shifts={this.context.shifts}
                                 paychecks={this.context.paychecks} />
                         </section>
-                        <section className='mtd_box'>
+                        <section className='mtd_box info_box'>
                             <MTD
                                 shifts={this.context.shifts}
                                 paychecks={this.context.paychecks} />
                         </section>
-                        <section className='ytd_box'>
+                        <section className='ytd_box info_box'>
                             <YTD
                                 shifts={this.context.shifts}
                                 paychecks={this.context.paychecks} />

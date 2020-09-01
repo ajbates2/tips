@@ -4,7 +4,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #83e0bdff;
     margin: 0;
     padding: 20px;
 }
@@ -16,10 +15,11 @@
     flex: 0 1 300px;
     display: grid;
     grid-template: auto 1fr auto / auto 1fr auto;
-    background-color: #65AD91;
+    background: linear-gradient(45deg, #2F4A4C, #456F6B);
     border-radius: 7px;
     padding: 10px;
-    filter: drop-shadow(4px 4px 0px #212121);
+    color: #5A9389;
+    box-shadow: 0 0 20px 10px #1D2020;
 }
 
 .list_date {
@@ -92,7 +92,7 @@
 }
 
 .fa_buttons:active {
-    color: #212122;
+    color: #FF715B;
 }
 
 .instructions {

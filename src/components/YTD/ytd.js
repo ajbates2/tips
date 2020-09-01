@@ -1,5 +1,5 @@
 import React from "react";
-import './ytd.css'
+import moment from "moment";
 
 export default function YTD(props) {
 
@@ -29,10 +29,14 @@ export default function YTD(props) {
         )
     }
 
+    function getThisYear(date) {
+        return moment(date).format('YYYY')
+    }
+
     return (
         <div>
             <CalculateYtd year={new Date().getFullYear()} />
-            <p>This year.</p>
+            <p>In {getThisYear(new Date())}</p>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import './mtd.css'
+import moment from "moment";
 
 export default function MTD(props) {
 
@@ -30,10 +30,14 @@ export default function MTD(props) {
         )
     }
 
+    function getThisMonth(date) {
+        return moment(date).format('MMMM')
+    }
+
     return (
         <div>
             <CalculateMtd month={new Date().getMonth()} />
-            <p>This month.</p>
+            <p>In {getThisMonth(new Date())}</p>
         </div>
     )
 }
