@@ -49,9 +49,9 @@
 }
 
 .income_selection button {
-    background-color: #1D2020;
+    background-color: #FF715B;
     border: none;
-    color: #BDD8C7;
+    color: #1D2020;
     border-radius: 5px;
     padding: 10px;
     font-size: large;
@@ -65,13 +65,14 @@
 
 .income_selection button:active {
     filter: none;
-    background-color: #FF715B;
+    color: #FF715B;
+    background-color: #1D2020;
 }
 
 .close_shift_window {
-    position: inherit;
-    right: 45px;
-    bottom: 331px;
+    position: absolute;
+    right: 34px;
+    top: 34px;
 }
 
 .close_shift_window:hover {
@@ -79,9 +80,9 @@
 }
 
 .close_check_window {
-    position: inherit;
-    right: 45px;
-    bottom: 258px;
+    position: absolute;
+    right: 34px;
+    top: 34px;
 }
 
 .close_check_window:hover {

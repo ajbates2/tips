@@ -17,7 +17,7 @@ export default class RoleForm extends Component {
     render() {
         return (
             <div className="setup_container">
-                <h3>Add your first role at {this.context.userData.jobs[0].job_name}.</h3>
+                <h3 className="bittersweet">Add your first role at {this.context.userData.jobs[0].job_name}.</h3>
                 <form className='role_form' onSubmit={this.handleSubmit}>
                     <label htmlFor="role_name">What is your title?</label>
                     <input type="text" id="role_name" name="role_name" placeholder="Server, Bartender, Barista, etc.." required />
@@ -31,7 +31,7 @@ export default class RoleForm extends Component {
                     </select>
                     <button type="submit">Add Role</button>
                 </form>
-                <p>You will be able to add multiple roles in a future version</p>
+                <p className="bittersweet">You will be able to add multiple roles in a future version</p>
             </div>
         )
     }

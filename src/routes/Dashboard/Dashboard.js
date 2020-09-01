@@ -5,14 +5,14 @@ import MTD from "../../components/MTD/mtd";
 import YTD from "../../components/YTD/ytd";
 import ShiftHistoryList from "../../components/ShiftHistoryList/ShiftHistoryList";
 import Header from "../../components/header/header"
-import ShiftForm from "../../components/ShiftForm/ShiftForm";
-import PaycheckForm from "../../components/PaycheckForm/PaycheckForm"
+import ShiftForm from "../../components/forms/ShiftForm";
+import PaycheckForm from "../../components/forms/PaycheckForm"
 import ShiftContext from "../../contexts/shiftHistoryContext";
 import ShiftApiService from "../../services/shift-api-service";
 import jwt from 'jsonwebtoken'
 import TokenService from "../../services/token-service";
-import JobForm from "../../components/JobForm/JobForm";
-import RoleForm from "../../components/RoleForm/RoleForm";
+import JobForm from "../../components/forms/JobForm";
+import RoleForm from "../../components/forms/RoleForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Dashboard extends Component {
@@ -98,34 +98,24 @@ export default class Dashboard extends Component {
                         </div>
                         )}
                     {this.state.moneyStep === 'paycheckForm' && (
-                        <>
-                            <FontAwesomeIcon
-                                icon='times'
-                                className='close_check_window'
-                                onClick={() => this.setState({ moneyStep: 'noSelection' })} />
-                            <PaycheckForm
-                                user={this.context.userData}
-                                onSubmit={() => {
-                                    this.setState({ moneyStep: 'noSelection' })
-                                    this.getPaychecks()
-                                }}
-                            />
-                        </>
+                        <PaycheckForm
+                            user={this.context.userData}
+                            closeWindow={() => this.setState({ moneyStep: 'noSelection' })}
+                            onSubmit={() => {
+                                this.setState({ moneyStep: 'noSelection' })
+                                this.getPaychecks()
+                            }}
+                        />
                     )}
                     {this.state.moneyStep === 'shiftForm' && (
-                        <>
-                            <FontAwesomeIcon
-                                icon='times'
-                                className='close_shift_window'
-                                onClick={() => this.setState({ moneyStep: 'noSelection' })} />
-                            <ShiftForm
-                                user={this.context.userData}
-                                onSubmit={() => {
-                                    this.setState({ moneyStep: 'noSelection' })
-                                    this.getshifts()
-                                }}
-                            />
-                        </>
+                        <ShiftForm
+                            user={this.context.userData}
+                            closeWindow={() => this.setState({ moneyStep: 'noSelection' })}
+                            onSubmit={() => {
+                                this.setState({ moneyStep: 'noSelection' })
+                                this.getshifts()
+                            }}
+                        />
                     )}
                 </section>
             )

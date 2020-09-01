@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ShiftContext from "../../contexts/shiftHistoryContext";
 import ShiftApiService from "../../services/shift-api-service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class PaycheckForm extends Component {
 
@@ -17,6 +18,10 @@ export default class PaycheckForm extends Component {
     render() {
         return (
             <form className='paycheck_form' onSubmit={this.handleSubmit}>
+                <FontAwesomeIcon
+                    icon='times'
+                    className='close_check_window'
+                    onClick={() => this.props.closeWindow()} />
                 <label htmlFor="check_total">Paycheck amount</label>
                 <input type="number" step="0.01" id="check_total" name="check_total" required />
                 <label htmlFor="job">Which employer?</label>

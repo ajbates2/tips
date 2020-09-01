@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../../components/header/header";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginForm from "../../components/forms/LoginForm";
 
 export default class LoginPage extends Component {
     static defaultProps = {

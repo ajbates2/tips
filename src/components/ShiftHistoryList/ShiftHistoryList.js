@@ -31,7 +31,7 @@ export default class ShiftHistoryList extends Component {
 
     renderFirstEntry = () => {
         if (this.props.shifts.length === 0) {
-            return (<h2 className="instructions">Add your first shift or paycheck by clicking the blue button below.</h2>
+            return (<h2 className="instructions bittersweet">Add your first shift or paycheck by clicking the blue button below.</h2>
             )
         }
         else {

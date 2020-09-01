@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ShiftApiService from "../../services/shift-api-service";
 import ShiftContext from "../../contexts/shiftHistoryContext";
 import moment from "moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class ShiftForm extends Component {
 
@@ -19,6 +20,10 @@ export default class ShiftForm extends Component {
         const today = moment().format('YYYY-MM-DD');
         return (
             <form className='shift_form' onSubmit={this.handleSubmit}>
+                <FontAwesomeIcon
+                    icon='times'
+                    className='close_shift_window'
+                    onClick={() => this.props.closeWindow()} />
                 <label htmlFor="tips">Tips made</label>
                 <input type="number" step="0.01" id="tips" name="tips" placeholder="123" required />
                 <label htmlFor="hours">Hours worked</label>
