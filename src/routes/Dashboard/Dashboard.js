@@ -20,7 +20,7 @@ export default class Dashboard extends Component {
     static contextType = ShiftContext
 
     state = {
-        moneyStep: 'noSelection'
+        moneyStep: 'noSelection',
     }
 
     handleMoneyForm = () => {
@@ -129,6 +129,10 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        if (this.context.loading)
+            return (
+                <FontAwesomeIcon icon="spinner" size="4x" className="loading_spinner fa-spin" />
+            )
         return (
             <>
                 <Header />
@@ -155,7 +159,6 @@ export default class Dashboard extends Component {
                     </section>
                     {this.renderAddButton()}
                 </main>
-
             </>
         )
     }

@@ -6,6 +6,7 @@
     justify-content: center;
     margin: 0;
     padding: 20px;
+    background: linear-gradient(0deg, #1D2020, #272B2B);
 }
 
 .history_list_item {

@@ -22,6 +22,7 @@ export class ShiftListProvider extends Component {
     state = {
         shiftList: [],
         paycheckList: [],
+        loading: true,
         userData: {
             jobs: [],
             roles: []
@@ -47,7 +48,7 @@ export class ShiftListProvider extends Component {
     }
 
     setUserData = userData => {
-        this.setState({ userData })
+        this.setState({ userData, loading: false })
     }
 
     clearError = () => {
@@ -63,6 +64,7 @@ export class ShiftListProvider extends Component {
         const value = {
             shifts: this.state.shiftList,
             paychecks: this.state.paycheckList,
+            loading: this.state.loading,
             userData: this.state.userData,
             error: this.state.error,
             setError: this.setError,

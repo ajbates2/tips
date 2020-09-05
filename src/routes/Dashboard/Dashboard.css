@@ -117,3 +117,10 @@
     text-align: center;
     color: #BDD8C7;
 }
+
+.loading_spinner {
+    color: #BDD8C7;
+    margin: 20px auto;
+    display: block;
+    height: -webkit-fill-available;
+}
