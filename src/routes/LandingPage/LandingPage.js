@@ -13,7 +13,7 @@ export default class LandingPage extends Component {
 
     render() {
         return (
-            <>
+            <div className="landing">
                 <header className='landing_header'>
                     <h1>tips.</h1>
                     <p>Keep track of your money.</p>
@@ -36,7 +36,7 @@ export default class LandingPage extends Component {
                         <Link to={`/register`}>Create an account</Link>
                     </div>
                 </main>
-            </>
+            </div>
         )
     }
 }

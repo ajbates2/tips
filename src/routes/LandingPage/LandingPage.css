@@ -1,3 +1,7 @@
+.landing {
+    background: linear-gradient(0deg, #1D2020, #272B2B);
+}
+
 .landing_nav {
     position: fixed;
     top: 0;
