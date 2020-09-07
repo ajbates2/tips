@@ -76,10 +76,10 @@ export default class UserPage extends Component {
                     </span>
                 </div>
                 <div className="setup_container">
-                    <JobForm />
+                    <JobForm onSubmit={() => this.getUser()} />
                 </div>
                 <div className="setup_container">
-                    <RoleForm />
+                    <RoleForm onSubmit={() => this.getUser()} />
                 </div>
             </>
         )
