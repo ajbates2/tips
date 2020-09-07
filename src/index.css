@@ -36,6 +36,7 @@ form {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 15px;
+  flex: 0 1 350px;
 }
 
 form label {

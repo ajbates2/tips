@@ -1,7 +1,8 @@
 .user_container {
-    display: grid;
     color: #BDD8C7;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .user_container li {
@@ -32,4 +33,41 @@
 
 .employer_list ul {
     justify-self: center;
+}
+
+.job_card {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20px;
+    padding: 5px 5px 5px;
+    flex: 1 1 350px;
+    background: linear-gradient(45deg, #FFA799, #FFB8AD);
+    border-radius: 7px;
+    padding: 10px;
+    color: #1D2020;
+    box-shadow: 0 0 20px 10px #1D2020;
+    display: grid;
+    grid-template: auto 1fr auto / auto 1fr auto;
+}
+
+.job_card_name {
+    grid-column: 1 / span all;
+    grid-row: 1;
+    margin: 0;
+}
+
+.role_list_card {
+    grid-column: 1 / span all;
+    display: grid;
+    grid-template-columns: auto 50%;
+}
+
+.role_name {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.hourly_rate {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: start;
 }

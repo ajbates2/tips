@@ -92,7 +92,9 @@
 
 .setup_container {
     text-align: -webkit-center;
-    background-color: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .job_form button {

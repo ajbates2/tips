@@ -27,27 +27,24 @@ export default class UserPage extends Component {
             .then(() => this.context.setLoadingState())
     }
 
-    renderJobList = () => {
-        return (
-            this.context.userData.jobs.map(job => {
-                return (
-                    <li key={job.id}>
-                        {job.job_name}
-                    </li>
-                )
-            })
+    renderRoleList = (jobId) => {
+        const filteredList = this.context.userData.roles.filter(role =>
+            role.job_id === jobId
+        )
+        return filteredList.map(role =>
+            <li key={role.id} className="role_list_card">
+                <span className='role_name'>{role.role_name}</span>
+                <span className='hourly_rate'>${role.hourly_rate}/hr</span>
+            </li>
         )
     }
 
-    renderRoleList = () => {
-        return (
-            this.context.userData.roles.map(role => {
-                return (
-                    <li key={role.id}>
-                        {role.role_name}
-                    </li>
-                )
-            })
+    renderJobCards = () => {
+        return this.context.userData.jobs.map(job =>
+            <ul key={job.id} className="job_card">
+                <h2 className='job_card_name'>{job.job_name}</h2>
+                {this.renderRoleList(job.id)}
+            </ul>
         )
     }
 
@@ -62,18 +59,7 @@ export default class UserPage extends Component {
                 <h1 className='user_name cartog_background'>{this.context.userData.user_name}</h1>
                 <p className="alert">This view is still under construction. For this version of the app this is all you will need.</p>
                 <div className='user_container'>
-                    <span className='employer_list'>
-                        <ul>
-                            <h2>Employers</h2>
-                            {this.renderJobList()}
-                        </ul>
-                    </span>
-                    <span className='role_list'>
-                        <ul>
-                            <h2>Roles</h2>
-                            {this.renderRoleList()}
-                        </ul>
-                    </span>
+                    {this.renderJobCards()}
                 </div>
                 <div className="setup_container">
                     <JobForm onSubmit={() => this.getUser()} />
