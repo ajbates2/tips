@@ -25,7 +25,7 @@ export default function YTD(props) {
         const checksum = checkArray.reduce((a, b) => a + b, 0)
         const Ytd = tipSum + checksum
         return (
-            <h2>${Ytd.toFixed(2)}</h2>
+            <h2>${Number(Ytd.toFixed(2)).toLocaleString("en-US")}</h2>
         )
     }
 

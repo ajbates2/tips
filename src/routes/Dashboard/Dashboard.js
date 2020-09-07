@@ -55,7 +55,7 @@ export default class Dashboard extends Component {
             .catch(this.context.setError)
     }
 
-    renderAccountCreation = () => {
+    renderLists = () => {
         if (this.state.activeList === "tips") {
             return (
                 <ShiftHistoryList
@@ -72,12 +72,24 @@ export default class Dashboard extends Component {
         }
         else if (this.context.userData.jobs.length === 0) {
             return (
-                <JobForm onSubmit={() => this.getUser()} />
+                <div className="setup_container">
+                    <h3 className="bittersweet">Add your first job!</h3>
+                    <JobForm onSubmit={() => this.getUser()} />
+                    <p className="bittersweet">You will be able to add multiple employers in a future version.</p>
+                </div>
             )
         }
         else if (this.context.userData.roles.length === 0) {
             return (
-                <RoleForm onSubmit={() => this.getUser()} />
+                <div className="setup_container">
+                    <h3 className="bittersweet">
+                        Add your first role at {this.context.userData.jobs[0].job_name}.
+                    </h3>
+                    <RoleForm onSubmit={() => this.getUser()} />
+                    <p className="bittersweet">
+                        You will be able to add multiple roles in a future version
+                    </p>
+                </div>
             )
         }
     }
@@ -156,9 +168,9 @@ export default class Dashboard extends Component {
             )
         return (
             <>
-                <Header />
+                <Header path={this.props.location.pathname} />
                 <main className='dashboard_main'>
-                    <div className="info_container">
+                    <div className="info_container cartog_background">
                         <section className='ehr_box info_box'>
                             <EHR
                                 shifts={this.context.shifts}
@@ -176,7 +188,7 @@ export default class Dashboard extends Component {
                         </section>
                     </div>
                     <section className='list_container'>
-                        {this.renderAccountCreation()}
+                        {this.renderLists()}
                     </section>
                     {this.renderAddButton()}
                     <StateSwitch

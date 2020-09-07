@@ -21,18 +21,24 @@ export default class Header extends Component {
         this.setState({ menuOpen: true })
     }
 
-    renderLogoutLink() {
-        return (
-            <div className='header_logged_in'>
+    renderCorrectLink = () => {
+        if (this.props.path === '/dashboard') {
+            return (
+                <Link to='/user'>user info</Link>
+            )
+        }
 
-            </div>
-        )
+        if (this.props.path === '/user') {
+            return (
+                <Link to='/dashboard'>dashboard</Link>
+            )
+        }
     }
 
     renderMenu() {
         return (
             <div className='header_logged_in'>
-                <Link to='/account'>account info</Link>
+                {this.renderCorrectLink()}
                 <Link
                     onClick={this.handleLogoutClick}
                     to='/'>

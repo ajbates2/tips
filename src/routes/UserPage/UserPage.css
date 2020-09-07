@@ -1,0 +1,35 @@
+.user_container {
+    display: grid;
+    color: #BDD8C7;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.user_container li {
+    list-style: none;
+}
+
+.user_name {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    justify-self: center;
+    color: #BDD8C7;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.employer_list {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+}
+
+.role_list {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+}
+
+.employer_list ul {
+    justify-self: center;
+}

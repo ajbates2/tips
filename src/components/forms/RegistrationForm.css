@@ -6,6 +6,8 @@
     grid-column: 1 / span 2;
     justify-self: center;
     max-width: 300px;
-    color: red;
+    color: #FF715B;
     font-weight: bold;
+    text-align: center;
+    margin: 10px auto;
 }
