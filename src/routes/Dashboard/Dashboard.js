@@ -14,6 +14,8 @@ import TokenService from "../../services/token-service";
 import JobForm from "../../components/forms/JobForm";
 import RoleForm from "../../components/forms/RoleForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import StateSwitch from "../../components/StateSwitch/StateSwitch";
+import PaycheckHistoryList from "../../components/PaycheckHistoryList/PaycheckHistoryList";
 
 export default class Dashboard extends Component {
 
@@ -21,10 +23,7 @@ export default class Dashboard extends Component {
 
     state = {
         moneyStep: 'noSelection',
-    }
-
-    handleMoneyForm = () => {
-        this.setState({ moneyStep: 'selectForm' })
+        activeList: 'tips',
     }
 
     handlePaycheckForm = () => {
@@ -37,27 +36,41 @@ export default class Dashboard extends Component {
 
     getshifts = () => {
         const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
-        ShiftApiService.getShifts(decodeAuthToken.user_id)
+        return ShiftApiService.getShifts(decodeAuthToken.user_id)
             .then(this.context.setShiftList)
             .catch(this.context.setError)
     }
 
     getPaychecks = () => {
         const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
-        ShiftApiService.getPaychecks(decodeAuthToken.user_id)
+        return ShiftApiService.getPaychecks(decodeAuthToken.user_id)
             .then(this.context.setPaycheckList)
             .catch(this.context.setError)
     }
 
     getUser = () => {
         const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
-        ShiftApiService.getUserData(decodeAuthToken.user_id)
+        return ShiftApiService.getUserData(decodeAuthToken.user_id)
             .then(this.context.setUserData)
             .catch(this.context.setError)
     }
 
     renderAccountCreation = () => {
-        if (this.context.userData.jobs.length === 0) {
+        if (this.state.activeList === "tips") {
+            return (
+                <ShiftHistoryList
+                    shifts={this.context.shifts}
+                />
+            )
+        }
+        else if (this.state.activeList === "paychecks") {
+            return (
+                <PaycheckHistoryList
+                    paychecks={this.context.paychecks}
+                />
+            )
+        }
+        else if (this.context.userData.jobs.length === 0) {
             return (
                 <JobForm onSubmit={() => this.getUser()} />
             )
@@ -67,20 +80,13 @@ export default class Dashboard extends Component {
                 <RoleForm onSubmit={() => this.getUser()} />
             )
         }
-        else {
-            return (
-                <ShiftHistoryList
-                    shifts={this.context.shifts}
-                    paychecks={this.context.paychecks} />
-            )
-        }
     }
 
     renderAddButton() {
         if (this.context.userData.roles.length === 0) {
             return null
         }
-        else {
+        else if (this.state.activeList === "tips") {
             return (
                 <section className='add_income_button'>
                     {this.state.moneyStep === 'noSelection' &&
@@ -88,25 +94,9 @@ export default class Dashboard extends Component {
                             icon="plus"
                             size="3x"
                             className="no_selection_button"
-                            onClick={this.handleMoneyForm}
+                            onClick={this.handleShiftForm}
                         />)
                     }
-                    {this.state.moneyStep === 'selectForm' &&
-                        (<div className="income_selection">
-                            <button onClick={this.handlePaycheckForm}>Paycheck</button>
-                            <button onClick={this.handleShiftForm}>Shift Earnings</button>
-                        </div>
-                        )}
-                    {this.state.moneyStep === 'paycheckForm' && (
-                        <PaycheckForm
-                            user={this.context.userData}
-                            closeWindow={() => this.setState({ moneyStep: 'noSelection' })}
-                            onSubmit={() => {
-                                this.setState({ moneyStep: 'noSelection' })
-                                this.getPaychecks()
-                            }}
-                        />
-                    )}
                     {this.state.moneyStep === 'shiftForm' && (
                         <ShiftForm
                             user={this.context.userData}
@@ -120,12 +110,43 @@ export default class Dashboard extends Component {
                 </section>
             )
         }
+        else if (this.state.activeList === "paychecks") {
+            return (
+                <section className='add_income_button'>
+                    {this.state.moneyStep === 'noSelection' &&
+                        (<FontAwesomeIcon
+                            icon="plus"
+                            size="3x"
+                            className="no_selection_button"
+                            onClick={this.handlePaycheckForm}
+                        />)
+                    }
+                    {this.state.moneyStep === 'paycheckForm' && (
+                        <PaycheckForm
+                            user={this.context.userData}
+                            closeWindow={() => this.setState({ moneyStep: 'noSelection' })}
+                            onSubmit={() => {
+                                this.setState({ moneyStep: 'noSelection' })
+                                this.getPaychecks()
+                            }}
+                        />
+                    )}
+                </section>
+            )
+        }
     }
 
     componentDidMount() {
-        this.getUser()
-        this.getshifts()
-        this.getPaychecks()
+        Promise.all([
+            this.getUser(),
+            this.getshifts(),
+            this.getPaychecks(),
+        ])
+            .then(() => this.context.setLoadingState())
+    }
+
+    handleActiveList = event => {
+        this.setState({ activeList: event.target.dataset.txt })
     }
 
     render() {
@@ -154,10 +175,14 @@ export default class Dashboard extends Component {
                                 paychecks={this.context.paychecks} />
                         </section>
                     </div>
-                    <section className='shiftHistory_box'>
+                    <section className='list_container'>
                         {this.renderAccountCreation()}
                     </section>
                     {this.renderAddButton()}
+                    <StateSwitch
+                        activeState={this.state.activeList}
+                        updateList={this.handleActiveList}
+                    />
                 </main>
             </>
         )

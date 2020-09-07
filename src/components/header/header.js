@@ -3,24 +3,49 @@ import './header.css'
 import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
 import ShiftContext from "../../contexts/shiftHistoryContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Header extends Component {
     static contextType = ShiftContext
+
+    state = {
+        menuOpen: false
+    }
 
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
         setTimeout(() => { window.location.reload(true) }, 500)
     }
 
+    handleMenuClick = () => {
+        this.setState({ menuOpen: true })
+    }
+
     renderLogoutLink() {
         return (
             <div className='header_logged_in'>
+
+            </div>
+        )
+    }
+
+    renderMenu() {
+        return (
+            <div className='header_logged_in'>
+                <Link to='/account'>account info</Link>
                 <Link
                     onClick={this.handleLogoutClick}
                     to='/'>
                     logout
-            </Link>
+                </Link>
             </div>
+        )
+    }
+
+    renderMenuButton() {
+        if (this.state.menuOpen) return this.renderMenu()
+        return (
+            <FontAwesomeIcon icon="bars" className="hamburger" onClick={() => this.handleMenuClick()} />
         )
     }
 
@@ -43,9 +68,11 @@ export default class Header extends Component {
     render() {
         return (
             <header className='dashboard_header'>
-                <h1 className="logo">tips.</h1>
+                <Link to='/dashboard'>
+                    <h1 className="logo">tips.</h1>
+                </Link>
                 {TokenService.hasAuthToken()
-                    ? this.renderLogoutLink()
+                    ? this.renderMenuButton()
                     : this.renderLoginLink()}
             </header>
         )

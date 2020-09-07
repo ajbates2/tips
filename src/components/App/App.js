@@ -4,6 +4,7 @@ import LandingPage from '../../routes/LandingPage/LandingPage';
 import Dashboard from '../../routes/Dashboard/Dashboard';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import LoginPage from '../../routes/LoginPage/LoginPage';
+import AccountPage from '../../routes/AccountPage/AccountPage';
 
 class App extends Component {
 
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path={'/dashboard'} component={Dashboard} />
             <Route path={'/login'} component={LoginPage} />
             <Route path={'/register'} component={RegistrationPage} />
+            <Route path={'/account'} component={AccountPage} />
           </Switch>
         </main>
       </div>

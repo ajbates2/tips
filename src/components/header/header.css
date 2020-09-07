@@ -27,3 +27,16 @@
 .dashboard_header a:hover {
     cursor: pointer;
 }
+
+.hamburger {
+    margin: 15px;
+    font-size: larger;
+}
+
+.hamburger:hover {
+    cursor: pointer;
+}
+
+.header_logged_in {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,21 @@
+.state_switch {
+    position: fixed;
+    background-color: #1D2020;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}
+
+.sw_button {
+    flex: 1 1;
+    color: #BDD8C7;
+    padding: 10px;
+}
+
+.sw_button:hover {
+    cursor: pointer;
+}
+
+.active_list {
+    background-color: #FF715B;
+}

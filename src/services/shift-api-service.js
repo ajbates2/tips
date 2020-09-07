@@ -125,8 +125,25 @@ const ShiftApiService = {
             )
     },
 
-    deleteShiftRequest(shiftId, callback) {
+    deleteShiftRequest(shiftId) {
         fetch(`${config.API_ENDPOINT}/shifts/${shiftId}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
+            .catch(error => {
+                console.error(error)
+            })
+    },
+
+    deleteCheckRequest(checkId) {
+        fetch(`${config.API_ENDPOINT}/paychecks/${checkId}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`

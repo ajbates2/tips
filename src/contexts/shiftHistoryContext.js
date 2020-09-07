@@ -14,6 +14,7 @@ const ShiftContext = React.createContext({
     setPaycheckList: () => { },
     setUserData: () => { },
     deleteShift: () => { },
+    setLoadingState: () => { },
 })
 
 export default ShiftContext
@@ -48,7 +49,11 @@ export class ShiftListProvider extends Component {
     }
 
     setUserData = userData => {
-        this.setState({ userData, loading: false })
+        this.setState({ userData })
+    }
+
+    setLoadingState = () => {
+        this.setState({ loading: false })
     }
 
     clearError = () => {
@@ -73,6 +78,7 @@ export class ShiftListProvider extends Component {
             setPaycheckList: this.setPaycheckList,
             setUserData: this.setUserData,
             deleteShift: this.deleteShift,
+            setLoadingState: this.setLoadingState,
         }
         return (
             <ShiftContext.Provider value={value}>
