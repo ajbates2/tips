@@ -3,6 +3,7 @@
 A tip tracking app for people working in the service industry.
 
 <a href="https://tips-sigma.vercel.app/">Live Site</a>
+
 <a href="https://github.com/ajbates2/tips-api">Server Repo</a>
 
 ## summary
