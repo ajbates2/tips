@@ -12,7 +12,7 @@ export default class PaycheckHistoryList extends Component {
         return this.props.paychecks.map(check =>
             <li key={check.id} className="history_list_item">
                 <span className="list_job">{check.job.job_name}</span>
-                <span className="list_date">{moment(check.date_received).format('ddd M/D/YY')}</span>
+                <span className="list_date">{moment.utc(check.date_received).format('ddd M/D/YY')}</span>
                 <span className="check_total">${check.check_total}</span>
                 <span className="list_buttons">
                     <FontAwesomeIcon
