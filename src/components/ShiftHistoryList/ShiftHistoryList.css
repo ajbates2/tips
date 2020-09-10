@@ -6,6 +6,9 @@
     justify-content: center;
     margin: 0;
     padding: 20px;
+}
+
+.correct_background {
     background: linear-gradient(0deg, #1D2020, #272B2B);
 }
 
@@ -104,4 +107,9 @@
 
 .bittersweet {
     color: #FF715B;
+}
+
+.setup_container {
+    text-align: -webkit-center;
+    justify-content: center;
 }

@@ -3,6 +3,8 @@ import './PaycheckHistoryList.css'
 import moment from "moment";
 import ShiftApiService from "../../services/shift-api-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import JobForm from "../forms/JobForm";
+import RoleForm from "../forms/RoleForm";
 
 export default class PaycheckHistoryList extends Component {
 
@@ -26,20 +28,47 @@ export default class PaycheckHistoryList extends Component {
     }
 
     renderFirstEntry = () => {
-        if (this.props.paychecks.length === 0) {
-            return (<h2 className="instructions bittersweet">Add your first shift or paycheck by clicking the blue button below.</h2>
+        if (this.props.userData.jobs.length === 0) {
+            return (
+                <div className="setup_container">
+                    <h3 className="bittersweet">Add your first job!</h3>
+                    <JobForm onSubmit={() => this.props.getUser()} />
+                    <p className="bittersweet">
+                        You can add mulitple employers in user info
+                    </p>
+                </div>
             )
         }
-        else {
-            return null
+        else if (this.props.userData.roles.length === 0) {
+            return (
+                <div className="setup_container">
+                    <h3 className="bittersweet">
+                        Add your first role at {this.props.userData.jobs[0].job_name}.
+                    </h3>
+                    <RoleForm onSubmit={() => this.props.getUser()} />
+                    <p className="bittersweet">
+                        You can add multiple roles in user info
+                    </p>
+                </div>
+            )
+        }
+        else if (this.props.paychecks.length === 0) {
+            return (<h2 className="instructions bittersweet">Add your first paycheck by clicking the blue button below.</h2>
+            )
+        }
+    }
+
+    bgLenAdjust() {
+        if (this.props.paychecks.length >= 3) {
+            return 'correct_background'
         }
     }
 
     render() {
         return (
             <>
-                {this.renderFirstEntry()}
-                <ul className='shift_history'>
+                <ul className={`shift_history ${this.bgLenAdjust()}`}>
+                    {this.renderFirstEntry()}
                     {this.renderList()}
                 </ul >
             </>

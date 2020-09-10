@@ -23,7 +23,7 @@ export default class Dashboard extends Component {
 
     state = {
         moneyStep: 'noSelection',
-        activeList: 'tips',
+        activeList: null,
     }
 
     handlePaycheckForm = () => {
@@ -60,6 +60,8 @@ export default class Dashboard extends Component {
             return (
                 <ShiftHistoryList
                     shifts={this.context.shifts}
+                    userData={this.context.userData}
+                    getUser={this.getUser}
                 />
             )
         }
@@ -67,29 +69,9 @@ export default class Dashboard extends Component {
             return (
                 <PaycheckHistoryList
                     paychecks={this.context.paychecks}
+                    userData={this.context.userData}
+                    getUser={this.getUser}
                 />
-            )
-        }
-        else if (this.context.userData.jobs.length === 0) {
-            return (
-                <div className="setup_container">
-                    <h3 className="bittersweet">Add your first job!</h3>
-                    <JobForm onSubmit={() => this.getUser()} />
-                    <p className="bittersweet">You will be able to add multiple employers in a future version.</p>
-                </div>
-            )
-        }
-        else if (this.context.userData.roles.length === 0) {
-            return (
-                <div className="setup_container">
-                    <h3 className="bittersweet">
-                        Add your first role at {this.context.userData.jobs[0].job_name}.
-                    </h3>
-                    <RoleForm onSubmit={() => this.getUser()} />
-                    <p className="bittersweet">
-                        You will be able to add multiple roles in a future version
-                    </p>
-                </div>
             )
         }
     }
@@ -155,6 +137,7 @@ export default class Dashboard extends Component {
             this.getPaychecks(),
         ])
             .then(() => this.context.setLoadingState())
+            .then(() => this.setState({ activeList: 'tips' }))
     }
 
     handleActiveList = event => {

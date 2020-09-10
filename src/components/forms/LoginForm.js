@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import TokenService from '../../services/token-service'
 import AuthApiService from '../../services/auth-api-service'
+import ShiftContext from '../../contexts/shiftHistoryContext'
 
 export default class LoginForm extends Component {
     static defaultProps = {
         onLoginSuccess: () => { }
     }
 
-    state = { error: null }
+    static contextType = ShiftContext
+
+    state = {
+        error: null,
+    }
 
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
@@ -22,7 +27,8 @@ export default class LoginForm extends Component {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                this.props.onLoginSuccess()
+                this.props.loadingState()
+                setTimeout(this.props.onLoginSuccess(), 2000)
             })
             .catch(res => {
                 this.setState({ error: res.error })

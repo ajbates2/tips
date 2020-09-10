@@ -14,7 +14,7 @@ export default class LandingPage extends Component {
     render() {
         return (
             <div className="landing">
-                <header className='landing_header'>
+                <header className='landing_header cartog_background'>
                     <h1>tips.</h1>
                     <p>Keep track of your money.</p>
                 </header>

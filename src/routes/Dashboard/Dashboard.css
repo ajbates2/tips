@@ -90,13 +90,6 @@
     cursor: pointer;
 }
 
-.setup_container {
-    text-align: -webkit-center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .job_form button {
     grid-column: 1 / span 2;
 }
