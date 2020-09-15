@@ -23,16 +23,21 @@ export default class LoginForm extends Component {
             email: email.value,
             password: password.value,
         })
+            .then(this.props.loadingState())
             .then(res => {
                 email.value = ''
                 password.value = ''
                 TokenService.saveAuthToken(res.authToken)
-                this.props.loadingState()
-                setTimeout(this.props.onLoginSuccess(), 2000)
+                this.props.onLoginSuccess()
             })
             .catch(res => {
                 this.setState({ error: res.error })
             })
+    }
+
+    handleLoadingState = ev => {
+        ev.preventDefault()
+        this.props.loadingState()
     }
 
     render() {

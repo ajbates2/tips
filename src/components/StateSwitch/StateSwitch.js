@@ -19,7 +19,7 @@ export default function StateSwitch(props) {
                 tips
             </span>
             <span
-                className={`sw_button ${activeListHighlight('paychecks')}`}
+                className={`sw_button check_button ${activeListHighlight('paychecks')}`}
                 onClick={props.updateList}
                 data-txt="paychecks"
             >

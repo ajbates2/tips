@@ -18,7 +18,9 @@ export default function YTD(props) {
             if (new Date(checks.date_received).getFullYear() === year) {
                 return checks
             }
-            return null
+            else {
+                return null
+            }
         })
         const checkArray = filteredChecks.map(check => { return Number(check.check_total) })
         const tipSum = tipArray.reduce((a, b) => a + b, 0)

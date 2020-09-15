@@ -11,8 +11,6 @@ import ShiftContext from "../../contexts/shiftHistoryContext";
 import ShiftApiService from "../../services/shift-api-service";
 import jwt from 'jsonwebtoken'
 import TokenService from "../../services/token-service";
-import JobForm from "../../components/forms/JobForm";
-import RoleForm from "../../components/forms/RoleForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StateSwitch from "../../components/StateSwitch/StateSwitch";
 import PaycheckHistoryList from "../../components/PaycheckHistoryList/PaycheckHistoryList";
@@ -170,14 +168,14 @@ export default class Dashboard extends Component {
                                 paychecks={this.context.paychecks} />
                         </section>
                     </div>
-                    <section className='list_container'>
-                        {this.renderLists()}
-                    </section>
-                    {this.renderAddButton()}
                     <StateSwitch
                         activeState={this.state.activeList}
                         updateList={this.handleActiveList}
                     />
+                    <section className='list_container'>
+                        {this.renderLists()}
+                    </section>
+                    {this.renderAddButton()}
                 </main>
             </>
         )

@@ -29,11 +29,19 @@ export default class LandingPage extends Component {
                     <div className="about">
                         <h2>The service industry isn't a 'fake' job.</h2>
                         <p>The money definitely isn't. Keep track of your income like a 'real' adult.
-            Making informed financial decisions is infinitely easier when you actually know your finances.</p>
+                        Making informed financial decisions is
+                             infinitely easier when you actually know your finances.</p>
                     </div>
                     <div className="cta">
                         <h3>Sign up today and take control of your cash</h3>
                         <Link to={`/register`}>Create an account</Link>
+                    </div>
+                    <div className="demo_creds">
+                        <h3>Demo Credentials</h3>
+                        <p>
+                            email: foo@bar.com <br />
+                            password: password
+                        </p>
                     </div>
                 </main>
             </div>

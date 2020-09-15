@@ -1,8 +1,8 @@
 .state_switch {
-    position: fixed;
     background-color: #1D2020;
-    bottom: 0;
     width: 100%;
+    grid-column: 1 / span 3;
+    grid-row: 2;
     display: flex;
 }
 
