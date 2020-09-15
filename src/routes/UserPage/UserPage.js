@@ -57,7 +57,6 @@ export default class UserPage extends Component {
             <>
                 <Header path={this.props.location.pathname} />
                 <h1 className='user_name cartog_background'>{this.context.userData.user_name}</h1>
-                <p className="alert">This view is still under construction. For this version of the app this is all you will need.</p>
                 <div className='user_container'>
                     {this.renderJobCards()}
                 </div>

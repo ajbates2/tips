@@ -6,6 +6,11 @@ A tip tracking app for people working in the service industry.
 
 <a href="https://github.com/ajbates2/tips-api">Server Repo</a>
 
+Demo account: {
+    email: 'foo@bar.com'
+    password: 'password'
+}
+
 ## summary
 
 'tips.' is an app aimed it people in the service industry to keep better track of their income. Has the ability to track income from multiple jobs as well as show monthly and hourly based income data.
@@ -13,9 +18,6 @@ A tip tracking app for people working in the service industry.
 <img src="/dashboard.png">
 
 create an account and/or log into the demo account
-
-email: 'foo@bar.com'
-password: 'password'
 
 ## inspiration
 
