@@ -1,7 +1,7 @@
 import React from 'react'
-import './StateSwitch.css'
+import './ListSelector.css'
 
-export default function StateSwitch(props) {
+export default function ListSelector(props) {
 
     function activeListHighlight(string) {
         if (props.activeState === string) {

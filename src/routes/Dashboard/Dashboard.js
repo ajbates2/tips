@@ -12,7 +12,7 @@ import ShiftApiService from "../../services/shift-api-service";
 import jwt from 'jsonwebtoken'
 import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import StateSwitch from "../../components/StateSwitch/StateSwitch";
+import ListSelector from "../../components/ListSelector/ListSelector";
 import PaycheckHistoryList from "../../components/PaycheckHistoryList/PaycheckHistoryList";
 
 export default class Dashboard extends Component {
@@ -168,7 +168,7 @@ export default class Dashboard extends Component {
                                 paychecks={this.context.paychecks} />
                         </section>
                     </div>
-                    <StateSwitch
+                    <ListSelector
                         activeState={this.state.activeList}
                         updateList={this.handleActiveList}
                     />

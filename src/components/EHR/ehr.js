@@ -11,25 +11,19 @@ export default function EHR(props) {
         const totalPaychecks = checkIndex.reduce((a, b) => a + b, 0)
         const ehr = (totalPaychecks + totalTips) / totalHours
 
+        if (tipIndex.length === 0) {
+            return (
+                <h2>$0/hr</h2>
+            )
+        }
         return (
             <h2>${ehr.toFixed(2)}/hr</h2>
         )
     }
 
-    function prettyRender() {
-        if (props.shifts.length === 0) {
-            return (
-                <h2>$0/hr</h2>
-            )
-        }
-        else {
-            return <CalculateEhr />
-        }
-    }
-
     return (
         <>
-            {prettyRender()}
+            <CalculateEhr />
         </>
     )
 }
