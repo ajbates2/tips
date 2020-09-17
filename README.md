@@ -33,7 +33,27 @@ It's very easy to just throw your money in your pocket and just assume you're fi
 
 ## tech used
 
-*   React.js
-*   Node.js
-*   Express.js
-*   PostgreSQL
+#### Front End
+
+* React
+  * Create React App
+  * React Router
+* Moment.js
+* HTML5
+* Vanilla CSS3
+* FontAwesome (icons)
+
+#### Testing
+
+* Jest (smoke tests)
+
+#### Production
+
+* Deployed via Vercel
+
+## Getting Started
+
+Clone repo to you machine
+`npm install` to load dependencies
+`npm test` to ensure build is stable
+`npm start` to run the app in dev mode
