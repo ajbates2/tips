@@ -24,7 +24,7 @@ export default class ShiftHistoryList extends Component {
                         className='fa_buttons'
                         onClick={() => {
                             ShiftApiService.deleteShiftRequest(shift.id)
-                            setTimeout(() => { window.location.reload(true) }, 100)
+                            setTimeout(() => { window.location.reload() }, 100)
                         }} />
                 </span>
             </li>

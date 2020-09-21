@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class ShiftForm extends Component {
 
+    state = {
+        jobSelect: this.props.user.jobs[0].id
+    }
+
     static contextType = ShiftContext
 
     handleSubmit = ev => {
@@ -28,16 +32,36 @@ export default class ShiftForm extends Component {
                 <input type="number" step="0.01" id="tips" name="tips" placeholder="123" required />
                 <label htmlFor="hours">Hours worked</label>
                 <input type="number" step="0.01" id="hours" name="hours" placeholder="5.73" required />
-                <label htmlFor="job">Where did you work?</label>
-                <select id="job" name="job_id" required>
+                <label htmlFor="job_id">Where did you work?</label>
+                <select id="job_id" name="job_id" onChange={ev => this.setState({ jobSelect: Number(ev.target.value) })} required>
                     {this.props.user.jobs.map(job => {
-                        return <option key={job.id} value={job.id}>{job.job_name}</option>
+                        return (
+                            <option
+                                key={job.id}
+                                value={job.id}
+
+                            >
+                                {job.job_name}
+                            </option>
+                        )
                     })}
                 </select>
-                <label htmlFor="role">What did you do?</label>
-                <select id="role" name="role_id" required>
+                <label htmlFor="role_id">What did you do?</label>
+                <select id="role_id" name="role_id" required>
                     {this.props.user.roles.map(role => {
-                        return <option key={role.id} value={role.id}>{role.role_name}</option>
+                        if (role.job_id === this.state.jobSelect) {
+                            return (
+                                <option
+                                    key={role.id}
+                                    value={role.id}
+                                >
+                                    {role.role_name}
+                                </option>
+                            )
+                        }
+                        else {
+                            return null
+                        }
                     })}
                 </select>
                 <label htmlFor="shift_date">When did you work?</label>
