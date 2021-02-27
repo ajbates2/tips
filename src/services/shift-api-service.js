@@ -3,7 +3,7 @@ import TokenService from './token-service'
 
 const ShiftApiService = {
     getShifts(id) {
-        return fetch(`${config.API_ENDPOINT}/shifts/all`, {
+        return fetch(`${config.API_ENDPOINT}/shifts/${id}`, {
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
@@ -16,7 +16,7 @@ const ShiftApiService = {
     },
 
     getPaychecks(id) {
-        return fetch(`${config.API_ENDPOINT}/paychecks/all`, {
+        return fetch(`${config.API_ENDPOINT}/paychecks/${id}`, {
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
