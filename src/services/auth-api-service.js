@@ -7,6 +7,7 @@ const AuthApiService = {
       headers: {
         'content-type': 'application/json',
       },
+      mode: 'cors',
       body: JSON.stringify(credentials),
     })
       .then(res =>
@@ -21,6 +22,7 @@ const AuthApiService = {
       headers: {
         'content-type': 'application/json',
       },
+      mode: 'cors',
       body: JSON.stringify(user),
     })
       .then(res =>
