@@ -14,6 +14,8 @@ import TokenService from "../../services/token-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ListSelector from "../../components/ListSelector/ListSelector";
 import PaycheckHistoryList from "../../components/PaycheckHistoryList/PaycheckHistoryList";
+import config from "../../config";
+
 
 export default class Dashboard extends Component {
 
@@ -33,21 +35,21 @@ export default class Dashboard extends Component {
     }
 
     getshifts = () => {
-        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
+        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), config.TOKEN_KEY)
         return ShiftApiService.getShifts(decodeAuthToken.user_id)
             .then(this.context.setShiftList)
             .catch(this.context.setError)
     }
 
     getPaychecks = () => {
-        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
+        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), config.TOKEN_KEY)
         return ShiftApiService.getPaychecks(decodeAuthToken.user_id)
             .then(this.context.setPaycheckList)
             .catch(this.context.setError)
     }
 
     getUser = () => {
-        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), 'make-that-shmoney')
+        const decodeAuthToken = jwt.verify(TokenService.getAuthToken(), config.TOKEN_KEY)
         return ShiftApiService.getUserData(decodeAuthToken.user_id)
             .then(this.context.setUserData)
             .catch(this.context.setError)

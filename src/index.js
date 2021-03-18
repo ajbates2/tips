@@ -20,6 +20,8 @@ library.add(
   faBars,
 )
 
+console.log(process.env)
+
 ReactDOM.render(
   <BrowserRouter>
     <ShiftListProvider>
