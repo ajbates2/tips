@@ -4,7 +4,6 @@ import TokenService from './token-service'
 const ShiftApiService = {
     getShifts() {
         return fetch(`${config.API_ENDPOINT}/shifts/all`, {
-            mode: 'cors',
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
@@ -18,7 +17,6 @@ const ShiftApiService = {
 
     getPaychecks() {
         return fetch(`${config.API_ENDPOINT}/paychecks/all`, {
-            mode: 'cors',
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
@@ -32,7 +30,6 @@ const ShiftApiService = {
 
     getUserData(id) {
         return fetch(`${config.API_ENDPOINT}/users/${id}`, {
-            mode: 'cors',
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
@@ -46,7 +43,6 @@ const ShiftApiService = {
 
     postShift(user_id, tips, hours, date_worked, job_id, role_id) {
         return fetch(`${config.API_ENDPOINT}/shifts`, {
-            mode: 'cors',
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -70,7 +66,6 @@ const ShiftApiService = {
 
     postPaycheck(user_id, check_total, date_received, job_id) {
         return fetch(`${config.API_ENDPOINT}/paychecks`, {
-            mode: 'cors',
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -92,7 +87,6 @@ const ShiftApiService = {
 
     postJob(user_id, job_name) {
         return fetch(`${config.API_ENDPOINT}/jobs`, {
-            mode: 'cors',
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -112,7 +106,6 @@ const ShiftApiService = {
 
     postRole(user_id, role_name, hourly_rate, job_id) {
         return fetch(`${config.API_ENDPOINT}/roles`, {
-            mode: 'cors',
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -134,7 +127,6 @@ const ShiftApiService = {
 
     deleteShiftRequest(shiftId) {
         fetch(`${config.API_ENDPOINT}/shifts/${shiftId}`, {
-            mode: 'cors',
             method: 'DELETE',
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
@@ -152,7 +144,6 @@ const ShiftApiService = {
 
     deleteCheckRequest(checkId) {
         fetch(`${config.API_ENDPOINT}/paychecks/${checkId}`, {
-            mode: 'cors',
             method: 'DELETE',
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`
