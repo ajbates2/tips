@@ -1,5 +1,6 @@
 .landing {
     background: linear-gradient(0deg, #1D2020, #272B2B);
+    height: 100vh;
 }
 
 .landing_nav {
@@ -27,17 +28,13 @@
 }
 
 .landing_header {
-    height: 400px;
+    height: 70vh;
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    place-items: center;
+    text-align: center;
 }
 
 .landing_header h1 {
-    grid-column: 1 / span 2;
-    grid-row: 1 / 1;
-    align-self: center;
-    justify-self: center;
     font-family: 'Segoe UI';
     font-style: italic;
     font-weight: 800;
@@ -47,64 +44,45 @@
 }
 
 .landing_header p {
-    grid-column: 1 / span 2;
-    justify-self: center;
     color: #FFA799;
     filter: drop-shadow(2px 3px 0px #2F4A4C);
     font-size: larger;
 }
 
-.about {
-    background: linear-gradient(0deg, #BDD8C7, #A0E4D3);
+.landing_main {
+    display: grid;
+    place-items: center;
+    color: white;
+    height: 30vh;
 }
 
-.about h2 {
-    text-align: center;
-    margin: 0 auto 50px;
-    padding-top: 50px;
-}
-
-.about h3 {
-    text-align: center;
-    margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.about p {
-    padding: 0 40px 50px;
-    line-height: 30px;
-    text-align: center;
-}
-
-.cta {
-    text-align: center;
-    height: 200px;
-    color: #BDD8C7;
-}
- 
-.cta h3 {
-    margin: 50px;
-}
-
-.cta a {
+.github_link {
     text-decoration: none;
-    color: #1D2020;
+    color: #272B2B;
+    font-size: large;
+    font-weight: bold;
+}
+
+.github_button {
     background-color: #FF715B;
-    padding: 10px;
-    border-radius: 5px;
+    border: none;
+    padding: 1em;
+    border-radius: .5em;
+    margin: 1em;
+    box-shadow: 0px 5px 0px 2px #2F4A4C;
+    transition: all .2s ease;
 }
 
-.cta a:hover {
-    cursor: pointer;
+.github_button:active {
+    box-shadow: 0px 1px 0px 2px #2F4A4C;
+    transform: translateY(4px);
 }
 
-.cta a:active {
-    background-color: #456F6B;
-}
-
-.demo_creds {
+.github_button:hover {
     background-color: #FFA799;
+}
+
+.landing_main_container {
     text-align: center;
-    padding: 10px;
+    line-height: 3em;
 }
