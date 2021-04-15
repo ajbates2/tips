@@ -1,6 +1,5 @@
 .landing {
     background: linear-gradient(0deg, #1D2020, #272B2B);
-    height: 100vh;
 }
 
 .landing_nav {
@@ -53,7 +52,9 @@
     display: grid;
     place-items: center;
     color: white;
-    height: 30vh;
+    height: auto;
+    margin-top: 10rem;
+    padding: 0 10vw 5vh;
 }
 
 .github_link {
@@ -85,4 +86,23 @@
 .landing_main_container {
     text-align: center;
     line-height: 3em;
+}
+
+.demo_creds {
+    color: white;
+    background-color: #456b6b5c;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 1rem 10em;
+    border-radius: 1rem;
+    z-index: 10;
+    margin: -8rem auto;
+    text-align: center;
+    box-shadow: 5px 5px 5px 0px #272b2b;
+}
+
+@media only screen and (max-width: 500px) {
+    .demo_creds {
+        padding: 1rem 20vw;
+    }
 }
