@@ -26,7 +26,7 @@ export default class LoginPage extends Component {
     render() {
         if (this.state.loading)
             return (
-                <FontAwesomeIcon icon="spinner" size="4x" className="loading_spinner fa-spin" />
+                <FontAwesomeIcon icon="spinner" size="5x" className="loading_spinner fa-spin" />
             )
         return (
             <>
